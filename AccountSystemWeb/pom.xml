@@ -11,7 +11,19 @@
     </parent>
 
     <artifactId>AccountSystemWeb</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>za.ac.nwu.as</groupId>
+            <artifactId>AccountSystemDomain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>za.ac.nwu.as</groupId>
+            <artifactId>AccountSystemLogic</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
     
 </project>

@@ -17,9 +17,11 @@
 
     <modules>
         <module>AccountSystemDomain</module>
+        <module>AccountSystemLogic</module>
         <module>AccountSystemRepository</module>
         <module>AccountSystemTranslator</module>
         <module>AccountSystemWeb</module>
+
     </modules>
 
     <dependencyManagement>
@@ -39,6 +41,11 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies></dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

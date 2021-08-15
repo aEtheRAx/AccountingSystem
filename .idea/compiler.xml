@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="AccountSystemDomain" />
         <module name="AccountSystemTranslator" />
+        <module name="AccountSystemLogic" />
         <module name="AccountSystemWeb" />
         <module name="AccountSystemRepository" />
       </profile>
