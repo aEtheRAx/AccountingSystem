@@ -1,4 +1,4 @@
-package za.ac.nwu.domain.gto;
+package za.ac.nwu.as.domain.dto;
 
 import org.springframework.stereotype.Component;
 
