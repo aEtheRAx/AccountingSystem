@@ -1,6 +1,6 @@
 package za.ac.nwu.as.domain.persistence;
 
-import lombok.*;
+//import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
