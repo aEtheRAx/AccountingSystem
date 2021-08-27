@@ -12,15 +12,17 @@ import java.time.LocalDate;
 @Component("createAccountTypeFlowName")
 public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
 
-    private final AccountTranslator accountTranslator;
+    //private final AccountTypeTranslator accountTypeTranslator;
+
+    private final AccountTypeTranslator accountTranslator;
 
     public CreateAccountTypeFlowImpl(AccountTypeTranslator accountTypeTranslator){
         this.accountTranslator = accountTypeTranslator;
     }
 
     @Override
-    public AccounttypeDto create(AccountTypeDto accountType){
-        if (null ==accountType.getCreationData()){
+    public AccountTypeDto create(AccountTypeDto accountType){
+        if (null == accountType.getCreationDate()){
             accountType.setCreationDate(LocalDate.now());
         }
         return accountTranslator.create(accountType);

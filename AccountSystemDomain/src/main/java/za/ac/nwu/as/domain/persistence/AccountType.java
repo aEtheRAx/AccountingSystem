@@ -33,6 +33,13 @@ public class AccountType implements Serializable {
     public AccountType() {
     }
 
+    //This part isn't included in the video. Look this up
+    public AccountType(String mnemonic, String accountTypeName, LocalDate creationDate) {
+        this.mnemonic = mnemonic;
+        this.accountTypeName = accountTypeName;
+        this.creationDate = creationDate;
+    }
+
     @Column(name = "ACCOUNT_TYPE_ID")
     public Long getAccountTypeId() {
         return accountTypeId;

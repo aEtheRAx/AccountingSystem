@@ -32,10 +32,10 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
-        <!-- <dependency>
+        <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-        </dependency> -->
+        </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
@@ -49,8 +49,8 @@
             <artifactId>springfox-spring-web</artifactId>
             <version>2.9.2</version>
         </dependency>
-
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -59,6 +59,5 @@
             </plugin>
         </plugins>
     </build>
-
     
 </project>
