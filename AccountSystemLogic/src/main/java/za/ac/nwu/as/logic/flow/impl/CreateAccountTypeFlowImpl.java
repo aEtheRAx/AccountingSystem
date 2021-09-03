@@ -13,7 +13,6 @@ import java.time.LocalDate;
 public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
 
     //private final AccountTypeTranslator accountTypeTranslator;
-
     private final AccountTypeTranslator accountTranslator;
 
     public CreateAccountTypeFlowImpl(AccountTypeTranslator accountTypeTranslator){
