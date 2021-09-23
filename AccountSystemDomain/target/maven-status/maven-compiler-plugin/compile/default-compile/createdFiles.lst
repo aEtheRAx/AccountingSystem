@@ -1,4 +1,9 @@
-za\ac\nwu\as\domain\service\GeneralResponse.class
 za\ac\nwu\as\domain\persistence\AccountTransaction.class
-za\ac\nwu\as\domain\dto\AccountTypeDto.class
+za\ac\nwu\as\domain\dto\AccountTransactionDto.class
 za\ac\nwu\as\domain\persistence\AccountType.class
+za\ac\nwu\as\domain\service\GeneralResponse.class
+za\ac\nwu\as\domain\persistence\AccountHolder.class
+za\ac\nwu\as\domain\persistence\AccountTransactionDetails.class
+za\ac\nwu\as\domain\dto\AccountHolderDto.class
+za\ac\nwu\as\domain\dto\AccountTypeDto.class
+za\ac\nwu\as\domain\dto\AccountTransactionDetailsDto.class
