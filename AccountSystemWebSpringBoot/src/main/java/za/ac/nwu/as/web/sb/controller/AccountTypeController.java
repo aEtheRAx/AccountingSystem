@@ -13,19 +13,16 @@ import za.ac.nwu.as.domain.dto.AccountTypeDto;
 import za.ac.nwu.as.domain.service.GeneralResponse;
 import za.ac.nwu.as.logic.flow.CreateAccountTypeFlow;
 import za.ac.nwu.as.logic.flow.FetchAccountTypeFlow;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("account-type")
-
 public class AccountTypeController {
 
-
+    /*
     @GetMapping("/all")
     @ApiOperation(value = "Echo the Ping.", notes = "This echo the ping back to the client")
     @ApiResponses(value = {
@@ -35,15 +32,13 @@ public class AccountTypeController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
     public ResponseEntity<GeneralResponse<String>> getAll() {
         GeneralResponse<String> response = new GeneralResponse<>(true, "No types found");
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);*/
     /*@GetMapping("/all")
     public GeneralResponse<String> getAll() {return new GeneralResponse<>(true, "No types found");}
     public ResponseEntity<String> ping(@RequestParam(value = "value that will be echoed", defaultValue ="pong")
         String echo) {
         return new ResponseEntity<>(echo, HttpStatus.OK);*/
 
-
-    /*
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
     private final CreateAccountTypeFlow createAccountTypeFlow;
 
@@ -79,7 +74,6 @@ public class AccountTypeController {
             @RequestBody AccountTypeDto accountType) {
         AccountTypeDto accountTypeResponse = createAccountTypeFlow.create(accountType);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountTypeResponse);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);*/
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
 }

@@ -1,28 +1,25 @@
 package za.ac.nwu.as.domain.persistence;
 
-//import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "DEMO_ACCOUNT_TYPE", schema = "VITRSA_SANDBOX")
-
-
+@Table(name = "ACCOUNT_TRANSAX", schema = "C##HEINKE")
 public class AccountTransaction implements Serializable {
 
+
     private static final long serialVersionUID = 4929393590271758415L;
-    @Id
-    @SequenceGenerator(name = "VIT_RSA_GENERIC_SEQ", sequenceName = "VITRSA_SANDBOX.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIT_RSA_GENERIC_SEQ")
 
     private Long transactionId;
-    private AccountType accountType;
+    private AccountType accountType; // Foreign key
     private Long memberId;
     private Long amount;
     private LocalDate transactionDate;
+
+    public AccountTransaction() {
+    }
 
     public AccountTransaction(Long transactionId, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
         this.transactionId = transactionId;
@@ -32,26 +29,12 @@ public class AccountTransaction implements Serializable {
         this.transactionDate = transactionDate;
     }
 
-    public AccountTransaction() {
-    }
-
-    @Column(name = "TX_ID")
+    @Id
+    @SequenceGenerator(name = "NWU_GENERIC_SEQ", sequenceName = "HR.NWU_GENERIC_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NWU_GENERIC_SEQ")
+    @Column(name = "TRANSAX_ID")
     public Long getTransactionId() {
         return transactionId;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ACCOUNT_TYPE_ID")
-    public AccountType getAccountTypeId() {
-        return accountType;
-    }
-
-    public void setAccountTypeId(AccountType accountTypeId) {
-        this.accountType = accountType;
     }
 
     @Column(name = "MEMBER_ID")
@@ -59,22 +42,36 @@ public class AccountTransaction implements Serializable {
         return memberId;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
-
     @Column(name = "AMOUNT")
     public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
-
-    @Column(name = "TX_DATE")
+    @Column(name = "TRANSAX_DATE")
     public LocalDate getTransactionDate() {
         return transactionDate;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNT_TYPE_ID")
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     public void setTransactionDate(LocalDate transactionDate) {
