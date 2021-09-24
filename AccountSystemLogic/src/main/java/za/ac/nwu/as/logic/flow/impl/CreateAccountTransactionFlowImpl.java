@@ -1,5 +1,7 @@
 package za.ac.nwu.as.logic.flow.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.AccountTransactionDto;
 import za.ac.nwu.as.domain.persistence.AccountTransaction;
@@ -16,6 +18,8 @@ import javax.transaction.Transactional;
 @Component("createAccountTransactionFlowName")
 public class CreateAccountTransactionFlowImpl implements CreateAccountTransactionFlow {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAccountTransactionFlowImpl.class);
+
     private final AccountTransactionTranslator accountTransactionTranslator;
     private final AccountTransactionDetailsTranslator accountTransactionDetailsTranslator;
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
@@ -30,9 +34,23 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
 
     @Override
     public AccountTransactionDto create(AccountTransactionDto accountTransactionDto) {
+
+        if(LOGGER.isInfoEnabled()) {
+            String outputForLogging = "null";
+            if ((null != accountTransactionDto) && (null != accountTransactionDto.getDetails())) {
+                outputForLogging = accountTransactionDto.getDetails().toString();
+            }
+            LOGGER.info("The input is {} and the Details is {}", accountTransactionDto, outputForLogging);
+        }
+        //LOGGER.warn("The input was {}", accountTransactionDto);
+
         accountTransactionDto.setTransactionId(null);
 
         AccountType accountType = fetchAccountTypeFlow.getAccountTypeDbEntityByMnemonic(accountTransactionDto.getAccountTypeMnemonic());
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info("Got AccountType for {} and the AccountTypeId is {}", accountTransactionDto.getAccountTypeMnemonic(), accountType.getAccountTypeId());
+        }
+
         AccountTransaction accountTransaction = accountTransactionDto.buildAccountTransaction(accountType);
 
         AccountTransaction createdAccountTransaction = accountTransactionTranslator.save(accountTransaction);
@@ -41,6 +59,9 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
             AccountTransactionDetails accountTransactionDetails = accountTransactionDto.getDetails().buildAccountTransactionDetails(createdAccountTransaction);
             accountTransactionDetailsTranslator.save(accountTransactionDetails);
         }
-        return new AccountTransactionDto(createdAccountTransaction);
+        AccountTransactionDto results = new AccountTransactionDto(createdAccountTransaction);
+        //LOGGER.info("The return object is {}", results);
+        LOGGER.warn("The return object is {}", results);
+        return results;
     }
 }

@@ -24,16 +24,16 @@
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <swagger.version>1.5.20</swagger.version>
 
-        <haltOnFailure>true</haltOnFailure>
+        <haltOnFailure>false</haltOnFailure>
     </properties>
 
     <modules>
         <module>AccountSystemDomain</module>
-        <module>AccountSystemLogic</module>
         <module>AccountSystemRepository</module>
         <module>AccountSystemTranslator</module>
-        <module>AccountSystemWeb</module>
+        <module>AccountSystemLogic</module>
         <module>AccountSystemWebSpringBoot</module>
+        <module>AccountSystemWeb</module>
     </modules>
 
     <dependencyManagement>
