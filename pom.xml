@@ -23,6 +23,8 @@
 
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <swagger.version>1.5.20</swagger.version>
+
+        <haltOnFailure>true</haltOnFailure>
     </properties>
 
     <modules>
@@ -41,10 +43,6 @@
                 <artifactId>springfox-swagger2</artifactId>
                 <version>${springfox-swagger.version}</version>
                 <exclusions>
-                    <!-- <exclusion>
-                        <groupId>com.fasterxml.jackson.annotation</groupId>
-                        <artifactId>jackson.annotation</artifactId>
-                    </exclusion> -->
                     <exclusion>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-api</artifactId>
@@ -62,15 +60,15 @@
                 <version>${springfox-swagger.version}</version>
             </dependency>
             <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
-            <version>${springfox-swagger.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-bean-validators</artifactId>
+                <version>${springfox-swagger.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.oracle.database.jdbc</groupId>
@@ -79,13 +77,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-    </dependencies>
 
     <build>
         <pluginManagement>
@@ -98,5 +89,37 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>
