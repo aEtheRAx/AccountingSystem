@@ -1,3 +1,6 @@
+za\ac\nwu\as\logic\flow\impl\CreateAccountHolderFlowImplTest.class
+za\ac\nwu\as\logic\flow\impl\CreateAccountTypeFlowImplTest.class
+za\ac\nwu\as\logic\flow\impl\CreateAccountTransactionFlowImplTest.class
 za\ac\nwu\as\logic\flow\impl\FetchAccountTypeFlowImplTest.class
 za\ac\nwu\as\logic\flow\impl\ModuloTest.class
-za\ac\nwu\as\logic\flow\impl\CreateAccountTypeFlowImplTest.class
+za\ac\nwu\as\logic\flow\impl\FetchAccountHolderFlowImplTest.class

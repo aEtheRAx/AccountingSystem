@@ -1,6 +1,9 @@
 package za.ac.nwu.as.translator.impl;
 
 import org.springframework.stereotype.Component;
+import za.ac.nwu.as.domain.dto.AccountHolderDto;
+import za.ac.nwu.as.domain.dto.AccountTransactionDto;
+import za.ac.nwu.as.domain.persistence.AccountHolder;
 import za.ac.nwu.as.domain.persistence.AccountTransaction;
 import za.ac.nwu.as.repo.persistence.AccountTransactionRepository;
 import za.ac.nwu.as.translator.AccountTransactionTranslator;

@@ -61,7 +61,7 @@ public class AccountTypeControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
-    /*
+/*
     @Test
     public void getAll() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":[" +
@@ -83,7 +83,7 @@ public class AccountTypeControllerTest {
         verify(fetchAccountTypeFlow, times(1)).getAllAccountTypes();
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-    */
+*/
 
     @Test
     public void create() throws Exception {

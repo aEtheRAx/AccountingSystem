@@ -76,7 +76,7 @@ public class AccountTypeController {
     public ResponseEntity<GeneralResponse<AccountTypeDto>> getAccountType(
             @ApiParam(value = "The mnemonic that uniquely identifies the AccountType.",
                     example = "MILES",
-                    name = "mnemnic",
+                    name = "mnemonic",
                     required = true)
             @PathVariable("mnemonic") final String mnemonic) {
         AccountTypeDto accountType = fetchAccountTypeFlow.getAccountTypeByMnemonic(mnemonic);

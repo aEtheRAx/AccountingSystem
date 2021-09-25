@@ -12,7 +12,7 @@ public class AccountHolder implements Serializable {
     private static final long serialVersionUID = -6020840492390503972L;
     private Long memberId;
     private String memberName;
-    private Long balance;
+    private int balance;
     private String currency;
     private LocalDate startDate;
 
@@ -21,7 +21,7 @@ public class AccountHolder implements Serializable {
     public AccountHolder() {
     }
 
-    public AccountHolder(Long memberId, String memberName, Long balance, String currency, LocalDate startDate) {
+    public AccountHolder(Long memberId, String memberName, int balance, String currency, LocalDate startDate) {
         this.memberId = memberId;
         this.memberName = memberName;
         this.balance = balance;
@@ -29,7 +29,7 @@ public class AccountHolder implements Serializable {
         this.startDate = startDate;
     }
 
-    public AccountHolder(String memberName, Long balance, String currency, LocalDate startDate) {
+    public AccountHolder(String memberName, int balance, String currency, LocalDate startDate) {
         this.memberName = memberName;
         this.balance = balance;
         this.currency = currency;
@@ -51,7 +51,7 @@ public class AccountHolder implements Serializable {
     }
 
     @Column(name = "BALANCE")
-    public Long getBalance() {
+    public int getBalance() {
         return balance;
     }
 
@@ -78,7 +78,7 @@ public class AccountHolder implements Serializable {
         this.memberName = memberName;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 

@@ -94,7 +94,7 @@ public class AccountHolderController {
             @ApiParam(value = "The AccountHolder balance that the specified AccountHolder should be updated with.",
                     name = "newAccountHolderBalance",
                     required = true)
-            @RequestParam("newAccountHolderBalance") final Long newBalance,
+            @RequestParam("newAccountHolderBalance") final int newBalance,
             @ApiParam(value = "The AccountHolder currency that the specified AccountHolder should be updated with.",
                     name = "newAccountHolderCurrency",
                     required = true)
@@ -129,7 +129,7 @@ public class AccountHolderController {
                     example = "50",
                     name = "balance",
                     required = true)
-            @PathVariable("balance") final Long newBalance
+            @PathVariable("balance") final int newBalance
     ){
         AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.subtractMiles(memberId,newBalance);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
@@ -155,7 +155,7 @@ public class AccountHolderController {
                     example = "100",
                     name = "balance",
                     required = true)
-            @PathVariable("balance") final Long newBalance)
+            @PathVariable("balance") final int newBalance)
     {
         AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.addMiles(memberId,newBalance);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);

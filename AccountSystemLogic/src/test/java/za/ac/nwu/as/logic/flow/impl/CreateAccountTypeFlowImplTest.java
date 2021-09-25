@@ -6,14 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.stubbing.OngoingStubbing;
 import za.ac.nwu.as.domain.dto.AccountTypeDto;
 import za.ac.nwu.as.translator.AccountTypeTranslator;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

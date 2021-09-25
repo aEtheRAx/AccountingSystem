@@ -100,6 +100,7 @@
                                     <exclude> za.ac.nwu.as.domain.dto.*</exclude>
                                     <exclude> za.ac.nwu.as.logic.config.LogicConfig</exclude>
                                     <exclude> za.ac.nwu.as.repo.config.RepositoryConfig</exclude>
+                                    <exclude> za.ac.nwu.as.web.sb.config.*</exclude>
                                 </excludes>
                                 <limits>
                                     <limit>
