@@ -51,14 +51,6 @@ public class AccountTransactionTest {
         accountTransaction.setTransactionId(1242L);
     }
 
-    /*
-    @Test
-    public void setAccountType() {
-        AccountTransaction accountTransaction = new AccountTransaction();
-        accountTransaction.setAccountType();
-    }
-    */
-
     @Test
     public void setMemberId() {
         AccountTransaction accountTransaction = new AccountTransaction();
@@ -77,11 +69,25 @@ public class AccountTransactionTest {
         accountTransaction.setTransactionDate(LocalDate.now());
     }
 
-    /*
+
     @Test
     public void setDetails() {
+        AccountTransactionDetails details = new AccountTransactionDetails();
         AccountTransaction accountTransaction = new AccountTransaction();
-        accountTransaction.setDetails(AccountTransactionDetails);
+        accountTransaction.setDetails(details);
     }
-    */
+
+    @Test
+    public void setAccountType() {
+        AccountType accountType = new AccountType();
+        AccountTransaction accountTransaction = new AccountTransaction();
+        accountTransaction.setAccountType(accountType);
+
+        AccountTransaction accountTransaction01 = new AccountTransaction(123L,accountType,456L,100L,LocalDate.now());
+        accountTransaction01.toString();
+        accountTransaction01.hashCode();
+        accountTransaction01.equals(accountTransaction);
+    }
+
+
 }

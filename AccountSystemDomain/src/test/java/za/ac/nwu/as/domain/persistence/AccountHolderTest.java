@@ -53,8 +53,8 @@ public class AccountHolderTest {
 
     @Test
     public void setBalance() {
-        AccountHolderDto accountHolderDto = new AccountHolderDto();
-        accountHolderDto.setBalance(1000);
+        AccountHolder accountHolder = new AccountHolder();
+        accountHolder.setBalance(1000);
     }
 
     @Test
@@ -67,5 +67,17 @@ public class AccountHolderTest {
     public void setStartDate() {
         AccountHolder accountHolder = new AccountHolder();
         accountHolder.setStartDate(LocalDate.now());
+
     }
+
+    @Test
+    public void AccountHolder() {
+        //Test additional methods
+        AccountHolder accountHolder01 = new AccountHolder("memberName",1200,"currency",LocalDate.now());
+        AccountHolder accountHolder02 = new AccountHolder(123L,"memberName",1200,"currency",LocalDate.now());
+        accountHolder01.toString();
+        accountHolder01.equals(accountHolder02);
+        accountHolder01.hashCode();
+    }
+
 }

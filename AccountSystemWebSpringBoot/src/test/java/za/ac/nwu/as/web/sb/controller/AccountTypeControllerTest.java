@@ -61,11 +61,11 @@ public class AccountTypeControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
-/*
+    /*
     @Test
     public void getAll() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":[" +
-                "{\"mnemonic\":\"MILES\",\"accountTypeName\":\"Miles account type\",\"creationDate\":[2020,1,1]}," +
+                "{\"mnemonic\":\"MILES\",\"accountTypeName\":\"Miles account type\",\"creationDate\":[2020,1,1]}" +
                 "{\"mnemonic\":\"PLAY\",\"accountTypeName\":\"Play account type\",\"creationDate\":[2021,4,1]}]}";
         List<AccountTypeDto> accountTypes = new ArrayList<>();
         accountTypes.add(new AccountTypeDto("MILES", "Miles account type", LocalDate.parse("2020-01-01")));
@@ -83,7 +83,8 @@ public class AccountTypeControllerTest {
         verify(fetchAccountTypeFlow, times(1)).getAllAccountTypes();
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-*/
+
+     */
 
     @Test
     public void create() throws Exception {

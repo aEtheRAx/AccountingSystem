@@ -54,7 +54,7 @@ public class AccountTransactionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/{transactionId}")
+    @GetMapping("/transactionId")
     @ApiOperation(value = "Fetch the specified AccountTransaction.", notes = "Fetch the AccountTransaction corresponding to the given transactionId")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The AccountTransaction was found successfully", response = GeneralResponse.class),

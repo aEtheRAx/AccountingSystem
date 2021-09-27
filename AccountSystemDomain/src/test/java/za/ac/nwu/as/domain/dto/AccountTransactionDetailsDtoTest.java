@@ -1,6 +1,8 @@
 package za.ac.nwu.as.domain.dto;
 
 import org.junit.Test;
+import za.ac.nwu.as.domain.persistence.AccountTransaction;
+import za.ac.nwu.as.domain.persistence.AccountTransactionDetails;
 
 import static org.junit.Assert.*;
 
@@ -27,28 +29,25 @@ public class AccountTransactionDetailsDtoTest {
     @Test
     public void setNumberOfItems() {
         AccountTransactionDetailsDto accountTransactionDetailsDto = new AccountTransactionDetailsDto();
-        accountTransactionDetailsDto.setPartnerName("12L");
+        accountTransactionDetailsDto.setNumberOfItems(12L);
     }
 
     @Test
     public void buildAccountTransactionDetails() {
-
+        AccountTransactionDetailsDto accountTransactionDetailsDto01 = new AccountTransactionDetailsDto("partnerName",12L);
+        accountTransactionDetailsDto01.buildAccountTransactionDetails();
+        AccountTransaction accountTransaction = new AccountTransaction();
+        accountTransactionDetailsDto01.buildAccountTransactionDetails(accountTransaction);
     }
 
     @Test
-    public void testBuildAccountTransactionDetails() {
-    }
-
-    @Test
-    public void testEquals() {
-    }
-
-    @Test
-    public void testHashCode() {
-    }
-
-    @Test
-    public void testToString() {
+    public void AccountTransactionDetailsDto() {
+        AccountTransactionDetailsDto accountTransactionDetailsDto01 = new AccountTransactionDetailsDto("partnerName",12L);
+        AccountTransactionDetails accountTransactionDetails = new AccountTransactionDetails();
+        AccountTransactionDetailsDto accountTransactionDetailsDto02 = new AccountTransactionDetailsDto(accountTransactionDetails);
+        accountTransactionDetailsDto01.toString();
+        accountTransactionDetailsDto01.equals(accountTransactionDetailsDto02);
+        accountTransactionDetailsDto01.hashCode();
 
     }
 }

@@ -50,4 +50,14 @@ public class AccountTypeDtoTest {
         AccountTypeDto accountTypeDto = new AccountTypeDto();
         assertNotNull(accountTypeDto.getAccountType());
     }
+
+    @Test
+    public void AccountTypeDto() {
+        AccountType accountType = new AccountType(123L,"accountMnemonic","AccountTypeName",LocalDate.now());
+        AccountTypeDto accountTypeDto2 = new AccountTypeDto(accountType);
+        AccountTypeDto accountTypeDto1 = new AccountTypeDto("accountMnemonic","AccountTypeName",LocalDate.now());
+        accountTypeDto1.toString();
+        accountTypeDto1.equals(accountTypeDto2);
+        accountTypeDto1.hashCode();
+    }
 }

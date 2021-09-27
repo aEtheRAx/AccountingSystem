@@ -4,6 +4,9 @@ import org.junit.Test;
 import za.ac.nwu.as.domain.dto.AccountTypeDto;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -39,13 +42,82 @@ public class AccountTypeTest {
         assertNull(accountType.getAccountTransactions());
     }
 
-    /*
     @Test
     public void setAccountTransactions() {
-        AccountTransaction accountTransaction = new AccountTransaction();
+
+        Set<AccountTransaction> accountTransactions = new Set<AccountTransaction>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean contains(Object o) {
+                return false;
+            }
+
+            @Override
+            public Iterator<AccountTransaction> iterator() {
+                return null;
+            }
+
+            @Override
+            public Object[] toArray() {
+                return new Object[0];
+            }
+
+            @Override
+            public <T> T[] toArray(T[] a) {
+                return null;
+            }
+
+            @Override
+            public boolean add(AccountTransaction accountTransaction) {
+                return false;
+            }
+
+            @Override
+            public boolean remove(Object o) {
+                return false;
+            }
+
+            @Override
+            public boolean containsAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(Collection<? extends AccountTransaction> c) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+        };
         AccountType accountType = new AccountType();
-        accountType.setAccountTransactions(accountTransaction.getAccountType().getAccountTransactions());
-    }*/
+        AccountType accountType1 = new AccountType(123L,"accountMnemonic","AccountTypeName",LocalDate.now());
+        accountType1.toString();
+        accountType1.equals(accountType);
+        accountType1.hashCode();
+        accountType.setAccountTransactions(accountTransactions);
+    }
 
     @Test
     public void setAccountTypeId() {
@@ -70,4 +142,5 @@ public class AccountTypeTest {
         AccountType accountType = new AccountType();
         accountType.setCreationDate(LocalDate.now());
     }
+
 }

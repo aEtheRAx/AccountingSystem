@@ -103,8 +103,28 @@ public class AccountTransactionControllerTest {
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
 
-
+    /*
     @Test
-    public void getAccountTransaction() {
+    public void getAccountTransaction() throws Exception {
+        //String accountTransactionToFind = "{\"transactionId\":123L,\"accountTypeMnemonic\":\"HOLDER\",\"memberId\":1234,\"amount\":1500,\"transactionDate\":[2020,1,1],\"details\":null}}";
+        String expectedResponse = "{\"successful\":true,\"payload\":" +
+                "{\"transactionId\":123L,\"accountTypeMnemonic\":\"HOLDER\",\"memberId\":1234,\"amount\":1500,\"transactionDate\":[2020,1,1],\"details\":null}}";
+
+        AccountTransactionDto accountTransaction = new AccountTransactionDto(123L, "HOLDER",1234L,1500L, LocalDate.parse("2020-01-01"),null);
+
+
+        when(fetchAccountTransactionFlow.getAccountTransactionById(accountTransaction.getTransactionId())).thenReturn(accountTransaction);
+
+        MvcResult mvcResult = mockMvc.perform(get((String.format("%s/%s", ACCOUNT_TRANSACTION_CONTROLLER_URL, "transactionId")))
+                        .servletPath(APP_URL)
+                        .accept(MediaType.APPLICATION_JSON)
+                        //.content(accountTransactionToFind)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        verify(fetchAccountTransactionFlow, times(1)).getAccountTransactionById(123L);
+        assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
+    */
 }

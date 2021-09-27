@@ -1,6 +1,7 @@
 package za.ac.nwu.as.domain.dto;
 
 import org.junit.Test;
+import za.ac.nwu.as.domain.persistence.AccountHolder;
 
 import java.time.LocalDate;
 
@@ -14,12 +15,14 @@ public class AccountHolderDtoTest {
         assertNull(accountHolderDto.getMemberName());
     }
 
-    /*
+
+/*
     @Test
     public void getBalance() {
         AccountHolderDto accountHolderDto = new AccountHolderDto();
         assert(accountHolderDto.getBalance());
-    }*/
+    }
+    */
 
     @Test
     public void getCurrency() {
@@ -31,6 +34,12 @@ public class AccountHolderDtoTest {
     public void getStartDate() {
         AccountHolderDto accountHolderDto = new AccountHolderDto();
         assertNull(accountHolderDto.getStartDate());
+    }
+
+    @Test
+    public void getAccountHolder() {
+        AccountHolderDto accountHolderDto = new AccountHolderDto("memberName",1500,"MILES,",LocalDate.now());
+        assertNotNull(accountHolderDto.getAccountHolder());
     }
 
     @Test
@@ -54,6 +63,17 @@ public class AccountHolderDtoTest {
     public void setStartDate(){
         AccountHolderDto accountHolderDto = new AccountHolderDto();
         accountHolderDto.setStartDate(LocalDate.now());
+    }
+
+    @Test
+    public void AccountHolder() {
+        //Test additional methods
+        AccountHolder accountHolder = new AccountHolder();
+        AccountHolderDto accountHolderDto01 = new AccountHolderDto("memberName",1500,"MILES,",LocalDate.now());
+        AccountHolderDto accountHolderDto02 = new AccountHolderDto(accountHolder);
+        accountHolderDto01.getBalance();
+        accountHolderDto01.hashCode();
+        accountHolderDto01.equals(accountHolderDto02);
     }
 
 }
