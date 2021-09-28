@@ -58,9 +58,9 @@ public class AccountTypeDto implements Serializable {
 
     @ApiModelProperty(position = 3,
             value = "AccountType Creation Date",
-            name = "CrationDate",
+            name = "CreationDate",
             notes = "This is the date on which the AccountType was created",
-            dataType = "java.lang.String",
+            dataType = "java.time.LocalDate",
             example = "2020-01-01",
             allowEmptyValue = true)
 

@@ -14,8 +14,8 @@ public class AccountTypeTest {
 
     @Test
     public void getAccountTypeId() {
-        AccountType accountType = new AccountType();
-        assertNull(accountType.getAccountTypeId());
+        AccountType accountType = new AccountType(12,"mnemonic","ccountTypeName",LocalDate.now());
+        assertNotNull(accountType.getAccountTypeId());
     }
 
     @Test
@@ -112,7 +112,7 @@ public class AccountTypeTest {
             }
         };
         AccountType accountType = new AccountType();
-        AccountType accountType1 = new AccountType(123L,"accountMnemonic","AccountTypeName",LocalDate.now());
+        AccountType accountType1 = new AccountType(123,"accountMnemonic","AccountTypeName",LocalDate.now());
         accountType1.toString();
         accountType1.equals(accountType);
         accountType1.hashCode();
@@ -122,7 +122,7 @@ public class AccountTypeTest {
     @Test
     public void setAccountTypeId() {
         AccountType accountType = new AccountType();
-        accountType.setAccountTypeId(123L);
+        accountType.setAccountTypeId(123);
     }
 
     @Test

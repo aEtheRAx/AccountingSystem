@@ -22,19 +22,19 @@ public class AccountTransactionDetailsDtoTest {
 
     @Test
     public void getNumberOfItems() {
-        AccountTransactionDetailsDto accountTransactionDetailsDto = new AccountTransactionDetailsDto();
-        assertNull(accountTransactionDetailsDto.getNumberOfItems());
+        AccountTransactionDetailsDto accountTransactionDetailsDto = new AccountTransactionDetailsDto("partnerName",12);
+        accountTransactionDetailsDto.getNumberOfItems();
     }
 
     @Test
     public void setNumberOfItems() {
         AccountTransactionDetailsDto accountTransactionDetailsDto = new AccountTransactionDetailsDto();
-        accountTransactionDetailsDto.setNumberOfItems(12L);
+        accountTransactionDetailsDto.setNumberOfItems(12);
     }
 
     @Test
     public void buildAccountTransactionDetails() {
-        AccountTransactionDetailsDto accountTransactionDetailsDto01 = new AccountTransactionDetailsDto("partnerName",12L);
+        AccountTransactionDetailsDto accountTransactionDetailsDto01 = new AccountTransactionDetailsDto("partnerName",12);
         accountTransactionDetailsDto01.buildAccountTransactionDetails();
         AccountTransaction accountTransaction = new AccountTransaction();
         accountTransactionDetailsDto01.buildAccountTransactionDetails(accountTransaction);
@@ -42,8 +42,8 @@ public class AccountTransactionDetailsDtoTest {
 
     @Test
     public void AccountTransactionDetailsDto() {
-        AccountTransactionDetailsDto accountTransactionDetailsDto01 = new AccountTransactionDetailsDto("partnerName",12L);
-        AccountTransactionDetails accountTransactionDetails = new AccountTransactionDetails();
+        AccountTransactionDetailsDto accountTransactionDetailsDto01 = new AccountTransactionDetailsDto("partnerName",12);
+        AccountTransactionDetails accountTransactionDetails = new AccountTransactionDetails("partnerName",120);
         AccountTransactionDetailsDto accountTransactionDetailsDto02 = new AccountTransactionDetailsDto(accountTransactionDetails);
         accountTransactionDetailsDto01.toString();
         accountTransactionDetailsDto01.equals(accountTransactionDetailsDto02);

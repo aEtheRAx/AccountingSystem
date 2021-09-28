@@ -53,7 +53,7 @@ public class AccountTypeDtoTest {
 
     @Test
     public void AccountTypeDto() {
-        AccountType accountType = new AccountType(123L,"accountMnemonic","AccountTypeName",LocalDate.now());
+        AccountType accountType = new AccountType(123,"accountMnemonic","AccountTypeName",LocalDate.now());
         AccountTypeDto accountTypeDto2 = new AccountTypeDto(accountType);
         AccountTypeDto accountTypeDto1 = new AccountTypeDto("accountMnemonic","AccountTypeName",LocalDate.now());
         accountTypeDto1.toString();

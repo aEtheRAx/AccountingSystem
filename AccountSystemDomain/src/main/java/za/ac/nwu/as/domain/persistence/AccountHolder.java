@@ -10,7 +10,7 @@ import java.util.Objects;
 public class AccountHolder implements Serializable {
 
     private static final long serialVersionUID = -6020840492390503972L;
-    private Long memberId;
+    private int memberId;
     private String memberName;
     private int balance;
     private String currency;
@@ -21,7 +21,7 @@ public class AccountHolder implements Serializable {
     public AccountHolder() {
     }
 
-    public AccountHolder(Long memberId, String memberName, int balance, String currency, LocalDate startDate) {
+    public AccountHolder(int memberId, String memberName, int balance, String currency, LocalDate startDate) {
         this.memberId = memberId;
         this.memberName = memberName;
         this.balance = balance;
@@ -37,11 +37,11 @@ public class AccountHolder implements Serializable {
     }
 
     @Id
-    @SequenceGenerator(name = "NWU_GENERIC_SEQ", sequenceName = "HR.NWU_GENERIC_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "NWU_GENERIC_SEQ", sequenceName = "SYSTEM.NWU_GENERIC_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NWU_GENERIC_SEQ")
 
     @Column(name = "MEMBER_ID")
-    public Long getMemberId() {
+    public int getMemberId() {
         return memberId;
     }
 
@@ -70,7 +70,7 @@ public class AccountHolder implements Serializable {
         return accountTransactions;
     }*/
 
-    public void setMemberId(Long memberId) {
+    public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
 

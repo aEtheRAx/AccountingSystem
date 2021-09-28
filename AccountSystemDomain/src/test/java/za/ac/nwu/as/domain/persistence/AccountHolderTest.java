@@ -12,7 +12,7 @@ public class AccountHolderTest {
     @Test
     public void getMemberId() {
         AccountHolder accountHolder = new AccountHolder();
-        assertNull(accountHolder.getMemberId());
+        assertNotNull(accountHolder.getMemberId());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class AccountHolderTest {
     @Test
     public void setMemberId() {
         AccountHolder accountHolder = new AccountHolder();
-        accountHolder.setMemberId(1242L);
+        accountHolder.setMemberId(1242);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class AccountHolderTest {
     public void AccountHolder() {
         //Test additional methods
         AccountHolder accountHolder01 = new AccountHolder("memberName",1200,"currency",LocalDate.now());
-        AccountHolder accountHolder02 = new AccountHolder(123L,"memberName",1200,"currency",LocalDate.now());
+        AccountHolder accountHolder02 = new AccountHolder(123,"memberName",1200,"currency",LocalDate.now());
         accountHolder01.toString();
         accountHolder01.equals(accountHolder02);
         accountHolder01.hashCode();

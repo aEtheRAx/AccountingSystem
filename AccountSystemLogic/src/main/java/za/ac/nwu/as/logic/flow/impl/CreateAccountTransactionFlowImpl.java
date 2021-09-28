@@ -44,7 +44,7 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
         }
         //LOGGER.warn("The input was {}", accountTransactionDto);
 
-        accountTransactionDto.setTransactionId(null);
+        accountTransactionDto.setTransactionId(0);
 
         AccountType accountType = fetchAccountTypeFlow.getAccountTypeDbEntityByMnemonic(accountTransactionDto.getAccountTypeMnemonic());
         if (LOGGER.isInfoEnabled()) {

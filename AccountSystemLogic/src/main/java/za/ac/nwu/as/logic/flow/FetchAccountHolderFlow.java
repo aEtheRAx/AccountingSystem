@@ -8,5 +8,5 @@ public interface FetchAccountHolderFlow {
 
     List<AccountHolderDto> getAllAccountHolders();
 
-    AccountHolderDto getAccountHolderById(Long memberId);
+    AccountHolderDto getAccountHolderById(int memberId);
 }

@@ -12,19 +12,19 @@ public class AccountTransactionTest {
     @Test
     public void getTransactionId() {
         AccountTransaction accountTransaction = new AccountTransaction();
-        assertNull(accountTransaction.getTransactionId());
+        assertNotNull(accountTransaction.getTransactionId());
     }
 
     @Test
     public void getMemberId() {
         AccountTransaction accountTransaction = new AccountTransaction();
-        assertNull(accountTransaction.getMemberId());
+        assertNotNull(accountTransaction.getMemberId());
     }
 
     @Test
     public void getAmount() {
         AccountTransaction accountTransaction = new AccountTransaction();
-        assertNull(accountTransaction.getAmount());
+        assertNotNull(accountTransaction.getAmount());
     }
 
     @Test
@@ -48,19 +48,19 @@ public class AccountTransactionTest {
     @Test
     public void setTransactionId() {
         AccountTransaction accountTransaction = new AccountTransaction();
-        accountTransaction.setTransactionId(1242L);
+        accountTransaction.setTransactionId(1242);
     }
 
     @Test
     public void setMemberId() {
         AccountTransaction accountTransaction = new AccountTransaction();
-        accountTransaction.setMemberId(1242L);
+        accountTransaction.setMemberId(1242);
     }
 
     @Test
     public void setAmount() {
         AccountTransaction accountTransaction = new AccountTransaction();
-        accountTransaction.setAmount(100L);
+        accountTransaction.setAmount(100);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class AccountTransactionTest {
         AccountTransaction accountTransaction = new AccountTransaction();
         accountTransaction.setAccountType(accountType);
 
-        AccountTransaction accountTransaction01 = new AccountTransaction(123L,accountType,456L,100L,LocalDate.now());
+        AccountTransaction accountTransaction01 = new AccountTransaction(123,accountType,456,100,LocalDate.now());
         accountTransaction01.toString();
         accountTransaction01.hashCode();
         accountTransaction01.equals(accountTransaction);

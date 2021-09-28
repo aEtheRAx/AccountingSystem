@@ -67,7 +67,7 @@ public class AccountTransactionController {
                     example = "50002",
                     name = "transactionId",
                     required = true)
-            @PathVariable("transactionId") final Long transactionId) {
+            @PathVariable("transactionId") final int transactionId) {
         AccountTransactionDto AccountTransaction = fetchAccountTransactionFlow.getAccountTransactionById(transactionId);
         GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, AccountTransaction);
         return new ResponseEntity<>(response, HttpStatus.OK);

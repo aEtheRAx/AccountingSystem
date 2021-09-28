@@ -7,5 +7,5 @@ import java.util.List;
 public interface FetchAccountTransactionFlow {
     List<AccountTransactionDto> getAllAccountTransactions();
 
-    AccountTransactionDto getAccountTransactionById(Long transactionId);
+    AccountTransactionDto getAccountTransactionById(int transactionId);
 }

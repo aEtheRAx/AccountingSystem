@@ -71,7 +71,7 @@ public class AccountHolderController {
                     example = "50002",
                     name = "memberId",
                     required = true)
-            @PathVariable("transactionId") final Long memberId) {
+            @PathVariable("memberId") final int memberId) {
         AccountHolderDto AccountHolderResponse = fetchAccountHolderFlow.getAccountHolderById(memberId);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -86,8 +86,8 @@ public class AccountHolderController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
     })
     public ResponseEntity<GeneralResponse<AccountHolderDto>> updateAccountHolder(
-            @ApiParam(value = "The memberId that uniquely identifies the AccountHolder.",
-                    example = "9739339194",
+            @ApiParam(value = "The memberName that uniquely identifies the AccountHolder.",
+                    example = "memberName",
                     name = "memberId",
                     required = true)
             @PathVariable("memberId") final String newMemberName,
@@ -124,7 +124,7 @@ public class AccountHolderController {
                     example = "50002",
                     name = "memberId",
                     required = true)
-            @PathVariable("memberId") final Long memberId,
+            @PathVariable("memberId") final int memberId,
             @ApiParam(value = "The AccountHolder balance that the specified AccountHolder should be updated (subtracted) with.",
                     example = "50",
                     name = "balance",
@@ -150,7 +150,7 @@ public class AccountHolderController {
                     example = "50002",
                     name = "memberId",
                     required = true)
-            @PathVariable("memberId") final Long memberId,
+            @PathVariable("memberId") final int memberId,
             @ApiParam(value = "The AccountHolder balance that the specified AccountHolder should be updated (add) with.",
                     example = "100",
                     name = "balance",

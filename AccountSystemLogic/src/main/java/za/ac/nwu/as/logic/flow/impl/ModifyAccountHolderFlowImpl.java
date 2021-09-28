@@ -21,14 +21,14 @@ public class ModifyAccountHolderFlowImpl implements ModifyAccountHolderFlow {
     }
 
     @Override
-    public AccountHolderDto subtractMiles(Long memberId, int balance) {
+    public AccountHolderDto subtractMiles(int memberId, int balance) {
         AccountHolderDto account = new AccountHolderDto();
         account.setBalance(account.getBalance() - balance);
         return account;
     }
 
     @Override
-    public AccountHolderDto addMiles(Long memberId, int balance) {
+    public AccountHolderDto addMiles(int memberId, int balance) {
         return null;
     }
 

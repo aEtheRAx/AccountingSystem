@@ -34,7 +34,7 @@ public class FetchAccountHolderFlowImpl implements FetchAccountHolderFlow {
     }
 
     @Override
-    public AccountHolderDto getAccountHolderById(Long memberId) {
+    public AccountHolderDto getAccountHolderById(int memberId) {
         AccountHolder accountHolder = translator.getAccountHolderByPk(memberId);
         return null != accountHolder ? new AccountHolderDto(accountHolder) : null;
     }

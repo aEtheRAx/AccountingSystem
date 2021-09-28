@@ -13,8 +13,8 @@ public class AccountTransactionDtoTest {
 
     @Test
     public void getTransactionId() {
-        AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
-        assertNull(accountTransactionDto.getTransactionId());
+        AccountTransactionDto accountTransactionDto = new AccountTransactionDto(123,"accountTypeMnemonic",121,23,LocalDate.now());
+        assertNotNull(accountTransactionDto.getTransactionId());
     }
 
     @Test
@@ -25,14 +25,14 @@ public class AccountTransactionDtoTest {
 
     @Test
     public void getMemberId() {
-        AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
-        assertNull(accountTransactionDto.getMemberId());
+        AccountTransactionDto accountTransactionDto = new AccountTransactionDto(123,"accountTypeMnemonic",121,23,LocalDate.now());
+        assertNotNull(accountTransactionDto.getMemberId());
     }
 
     @Test
     public void getAmount() {
-        AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
-        assertNull(accountTransactionDto.getAmount());
+        AccountTransactionDto accountTransactionDto = new AccountTransactionDto(123,"accountTypeMnemonic",121,23,LocalDate.now());
+        assertNotNull(accountTransactionDto.getAmount());
     }
 
     @Test
@@ -44,13 +44,13 @@ public class AccountTransactionDtoTest {
     @Test
     public void setAmount() {
         AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
-        accountTransactionDto.setAmount(100L);
+        accountTransactionDto.setAmount(100);
     }
 
     @Test
     public void setMemberId() {
         AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
-        accountTransactionDto.setMemberId(1242L);
+        accountTransactionDto.setMemberId(1242);
     }
 
     @Test
@@ -62,16 +62,16 @@ public class AccountTransactionDtoTest {
     @Test
     public void setTransactionId() {
         AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
-        accountTransactionDto.setTransactionId(1242L);
+        accountTransactionDto.setTransactionId(1242);
     }
 
     @Test
     public void AccountTransactionDto() {
         AccountType accountType = new AccountType();
-        AccountTransaction accountTransaction = new AccountTransaction(123L,accountType,456L,100L,LocalDate.now());
+        AccountTransaction accountTransaction = new AccountTransaction(123,accountType,456,100,LocalDate.now());
         AccountTransactionDetails details = new AccountTransactionDetails();
-        AccountTransactionDto accountTransactionDto01 = new AccountTransactionDto(123L,"accountTypeMnemonic",345L,1500L,LocalDate.now());
-        AccountTransactionDto accountTransactionDto02 = new AccountTransactionDto(123L,"accountTypeMnemonic",345L,1500L,LocalDate.now(), details);
+        AccountTransactionDto accountTransactionDto01 = new AccountTransactionDto(123,"accountTypeMnemonic",345,1500,LocalDate.now());
+        AccountTransactionDto accountTransactionDto02 = new AccountTransactionDto(123,"accountTypeMnemonic",345,1500,LocalDate.now(), details);
         accountTransactionDto01.buildAccountTransaction(accountType);
         AccountTransactionDto accountTransactionDto03 = new AccountTransactionDto(accountTransaction);
         accountTransactionDto01.toString();

@@ -6,6 +6,7 @@ import za.ac.nwu.as.domain.persistence.AccountHolder;
 import za.ac.nwu.as.repo.persistence.AccountHolderRepository;
 import za.ac.nwu.as.translator.AccountHolderTranslator;
 
+import java.text.Format;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +40,10 @@ public class AccountHolderTranslatorImpl implements AccountHolderTranslator {
     }
 
     @Override
-    public AccountHolder getAccountHolderByPk(Long memberId) {
+    public AccountHolder getAccountHolderByPk(int memberId) {
         try {
-            return repo.findById(memberId).orElse(null);
+            Long value = Long.valueOf(memberId);
+            return repo.findById(value).orElse(null);
         } catch (Exception e) {
             throw new RuntimeException("Unable to read to the DB", e);
         }

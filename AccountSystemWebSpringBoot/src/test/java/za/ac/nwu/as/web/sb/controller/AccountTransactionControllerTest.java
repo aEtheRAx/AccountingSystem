@@ -67,7 +67,7 @@ public class AccountTransactionControllerTest {
         String expectedResponse = "{\"successful\":true,\"payload\":" +
                 "{\"transactionId\":2314,\"accountTypeMnemonic\":\"HOLDER\",\"memberId\":1234,\"amount\":1500,\"transactionDate\":[2020,1,1],\"details\":null}}";
 
-        AccountTransactionDto accountTransaction = new AccountTransactionDto(2314L, "HOLDER",1234L,1500L, LocalDate.parse("2020-01-01"),null);
+        AccountTransactionDto accountTransaction = new AccountTransactionDto(2314, "HOLDER",1234,1500, LocalDate.parse("2020-01-01"),null);
 
         when(createAccountTransactionFlow.create(eq(accountTransaction))).then(returnsFirstArg());
 
@@ -88,7 +88,7 @@ public class AccountTransactionControllerTest {
         String expectedResponse = "{\"successful\":true,\"payload\":[" +
                 "{\"transactionId\":2314,\"accountTypeMnemonic\":\"HOLDER\",\"memberId\":1234,\"amount\":1500,\"transactionDate\":[2020,1,1],\"details\":null}]}";
         List<AccountTransactionDto> accountTransaction = new ArrayList<>();
-        accountTransaction.add(new AccountTransactionDto(2314L, "HOLDER",1234L,1500L, LocalDate.parse("2020-01-01")));
+        accountTransaction.add(new AccountTransactionDto(2314, "HOLDER",1234,1500, LocalDate.parse("2020-01-01")));
 
         when(fetchAccountTransactionFlow.getAllAccountTransactions()).thenReturn(accountTransaction);
 

@@ -12,5 +12,7 @@ public interface AccountTransactionTranslator {
 
     List<AccountTransaction> getAllAccountTransactions();
 
-    AccountTransaction getAccountTransactionByPk(Long transactionId);
+    AccountTransaction getAccountTransactionByPk(int transactionId);
+
+    AccountTransactionDto create(AccountTransactionDto accountTransaction);
 }

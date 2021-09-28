@@ -11,7 +11,7 @@ public interface AccountHolderTranslator {
 
     List<AccountHolder> getAllAccountHolders();
 
-    AccountHolder getAccountHolderByPk(Long memberId);
+    AccountHolder getAccountHolderByPk(int memberId);
 
     AccountHolderDto create(AccountHolderDto accountHolder);
 

@@ -56,7 +56,7 @@ public class AccountHolderDto implements Serializable {
             value = "AccountHolder Balance",
             name = "Balance",
             notes = "The balance of the AccountHolder",
-            dataType = "java.lang.Long",
+            dataType = "java.lang.Integer",
             example = "5000",
             required = true)
 
@@ -88,7 +88,7 @@ public class AccountHolderDto implements Serializable {
             value = "AccountHolder Start Date",
             name = "StartDate",
             notes = "This is the start date on which to add Miles/Currency for a member",
-            dataType = "java.lang.String",
+            dataType = "java.time.LocalDate",
             example = "2020-01-01",
             allowEmptyValue = true)
 
