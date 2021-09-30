@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.AccountTypeDto;
+import za.ac.nwu.as.domain.persistence.AccountType;
 import za.ac.nwu.as.logic.flow.ModifyAccountTypeFlow;
 import za.ac.nwu.as.translator.AccountTypeTranslator;
 
@@ -24,15 +25,16 @@ public class ModifyAccountTypeFlowImpl implements ModifyAccountTypeFlow {
 
     @Override
     public AccountTypeDto deleteAccountType(String mnemonic) {
-        return null;
+        return accountTranslator.deleteAccountTypeByMnemonicNativeQuery(mnemonic);
+    }
+
+    @Override
+    public AccountTypeDto deleteAccountTypeByMnemonicNativeQuery(String mnemonic) {
+        return accountTranslator.deleteAccountTypeByMnemonicNativeQuery(mnemonic);
     }
 
     @Override
     public AccountTypeDto updateAccountType(String mnemonic, String newAccountTypeName, LocalDate newCreationDate) {
-        AccountTypeDto accountTypeDto = new AccountTypeDto();
-        accountTypeDto.setMnemonic(mnemonic);
-        accountTypeDto.setAccountTypeName(newAccountTypeName);
-        accountTypeDto.setCreationDate(newCreationDate);
-        return accountTypeDto;
+        return accountTranslator.updateAccountType(mnemonic, newAccountTypeName, newCreationDate);
     }
 }

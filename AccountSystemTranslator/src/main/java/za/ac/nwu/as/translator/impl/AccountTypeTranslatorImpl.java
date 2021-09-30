@@ -8,6 +8,7 @@ import za.ac.nwu.as.domain.persistence.AccountType;
 import za.ac.nwu.as.repo.persistence.AccountTypeRepository;
 import za.ac.nwu.as.translator.AccountTypeTranslator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,12 +47,61 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     }
 
     @Override
+    public AccountTypeDto getAccountTypeByMnemonicNativeQuery(String mnemonic) {
+        try {
+            AccountType accountType = accountTypeRepository.getAccountTypeByMnemonicNativeQuery(mnemonic);
+            return new AccountTypeDto(accountType);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
+    }
+
+    @Override
+    public AccountTypeDto deleteAccountTypeByMnemonicNativeQuery(String mnemonic) {
+        try {
+            AccountType accountType = accountTypeRepository.deleteAccountTypeByMnemonicNativeQuery(mnemonic);
+            return new AccountTypeDto(accountType);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to delete from the DB", e);
+        }
+    }
+
+    @Override
+    public AccountTypeDto updateAccountType(String mnemonic, String newAccountTypeName, LocalDate newCreationDate) {
+        try {
+            AccountType accountType = accountTypeRepository.updateAccountTypeByMnemonicNativeQuery(mnemonic,newAccountTypeName,newCreationDate);
+            return new AccountTypeDto(accountType);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to update the DB", e);
+        }
+    }
+
+
+    @Override
     public AccountTypeDto getAccountTypeByMnemonic(String mnemonic) {
-        return null;
+        try {
+            AccountType accountType = accountTypeRepository.getAccountTypeByMnemonic(mnemonic);
+            return new AccountTypeDto(accountType);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
+    }
+
+    @Override
+    public AccountTypeDto getAccountTypeDtoByMnemonic(String mnemonic) {
+        try {
+            return accountTypeRepository.getAccountTypeDtoByMnemonic(mnemonic);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
     }
 
     @Override
     public AccountType getAccountTypeDbEntityByMnemonic(String accountTypeMnemonic) {
-        return null;
+        try {
+            return accountTypeRepository.getAccountTypeByMnemonicNativeQuery(accountTypeMnemonic);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
     }
 }

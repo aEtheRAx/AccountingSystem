@@ -3,8 +3,10 @@ package za.ac.nwu.as.translator.impl;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.AccountHolderDto;
 import za.ac.nwu.as.domain.dto.AccountTransactionDto;
+import za.ac.nwu.as.domain.dto.AccountTypeDto;
 import za.ac.nwu.as.domain.persistence.AccountHolder;
 import za.ac.nwu.as.domain.persistence.AccountTransaction;
+import za.ac.nwu.as.domain.persistence.AccountType;
 import za.ac.nwu.as.repo.persistence.AccountTransactionRepository;
 import za.ac.nwu.as.translator.AccountTransactionTranslator;
 
@@ -30,16 +32,28 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
     }
 
     @Override
-    public List<AccountTransaction> getAllAccountTransactions() {
-        List<AccountTransaction> accountTransactions;
+    public List<AccountTransactionDto> getAllAccountTransactions() {
+        List<AccountTransactionDto> accountTransactionDtos = new ArrayList<>();
+        try {
+            for (AccountTransaction accountTransaction: repo.findAll()) {
+                accountTransactionDtos.add(new AccountTransactionDto(accountTransaction));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
+        return accountTransactionDtos;
+
+                /*List<AccountTransaction> accountTransactions;
         try {
             accountTransactions = new ArrayList<>(repo.findAll());
         } catch (Exception e) {
             throw new RuntimeException("Unable to read to the DB", e);
         }
         return accountTransactions;
+         */
     }
 
+    /*
     @Override
     public AccountTransaction getAccountTransactionByPk(int transactionId) {
         try {
@@ -49,7 +63,17 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
             throw new RuntimeException("Unable to read to the DB", e);
         }
     }
+*/
 
+    @Override
+    public AccountTransactionDto getAccountTransByIDNativeQuery(int transactionId) {
+        try {
+            AccountTransaction accountTransaction = repo.getAccountTransByIDNativeQuery(transactionId);
+            return new AccountTransactionDto(accountTransaction);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
+    }
 
     @Override
     public AccountTransactionDto create(AccountTransactionDto accountTransactionDto) {

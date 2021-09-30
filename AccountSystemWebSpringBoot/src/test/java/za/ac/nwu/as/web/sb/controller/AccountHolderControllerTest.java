@@ -83,18 +83,19 @@ public class AccountHolderControllerTest {
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
 
+
     @Test
     public void updateAccountHolder() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":" +
-                "{\"memberName\":\"HOLDER\",\"balance\":1000,\"currency\":\"MILES\",\"startDate\":[2021,4,1]}}";
+                "{\"memberName\":\"TestAccount\",\"balance\":200,\"currency\":\"MILES\",\"startDate\":[2021,4,1]}}";
 
-        AccountHolderDto accountHolder = new AccountHolderDto("HOLDER", 1000, "MILES",
+        AccountHolderDto accountHolder = new AccountHolderDto("TestAccount", 200, "MILES",
                 LocalDate.parse("2021-04-01"));
 
         when(modifyAccountHolderFlow.updateAccountHolder(anyString(), anyInt(), anyString(), any(LocalDate.class))).thenReturn(accountHolder);
 
-        MvcResult mvcResult = mockMvc.perform(put((String.format("%s/%s", ACCOUNT_HOLDER_CONTROLLER_URL, "HOLDER")))
-                        .param("newAccountHolderBalance", String.valueOf(1000))
+        MvcResult mvcResult = mockMvc.perform(put((String.format("%s/%s", ACCOUNT_HOLDER_CONTROLLER_URL, "TestAccount")))
+                        .param("newAccountHolderBalance", String.valueOf(200))
                         .param("newAccountHolderCurrency", "MILES")
                         .param("newCreationDate", "2021-04-01")
                         .servletPath(APP_URL)
@@ -103,10 +104,11 @@ public class AccountHolderControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        verify(modifyAccountHolderFlow, times(1)).updateAccountHolder(eq("HOLDER"),eq(1000),
+        verify(modifyAccountHolderFlow, times(1)).updateAccountHolder(eq("TestAccount"),eq(200),
                 eq("MILES"), eq(LocalDate.parse("2021-04-01")));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
+
 
     @Test
     public void getAll() throws Exception {
@@ -114,8 +116,6 @@ public class AccountHolderControllerTest {
                 "{\"memberName\":\"HOLDER\",\"balance\":1000,\"currency\":\"MILES\",\"startDate\":[2021,4,1]}]}";
         List<AccountHolderDto> accountHolders = new ArrayList<>();
         accountHolders.add(new AccountHolderDto("HOLDER", 1000, "MILES", LocalDate.parse("2021-04-01")));
-        /*accountHolders.add(new AccountHolderDto("PLAY", 1500, "ZAR",
-                LocalDate.parse("2020-04-01")));*/
 
         when(fetchAccountHolderFlow.getAllAccountHolders()).thenReturn(accountHolders);
 

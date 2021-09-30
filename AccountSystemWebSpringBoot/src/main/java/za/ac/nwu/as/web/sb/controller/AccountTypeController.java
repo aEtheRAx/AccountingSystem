@@ -45,9 +45,9 @@ public class AccountTypeController {
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
             @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
-    public ResponseEntity<GeneralResponse<String>> getAll() {
+    public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll() {
         List<AccountTypeDto> accountTypes = fetchAccountTypeFlow.getAllAccountTypes();
-        GeneralResponse<String> response = new GeneralResponse<>(true, "No types found");
+        GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<>(true, accountTypes);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

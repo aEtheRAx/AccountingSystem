@@ -68,7 +68,7 @@ public class AccountHolderController {
     })
     public ResponseEntity<GeneralResponse<AccountHolderDto>> getAccountHolder(
             @ApiParam(value = "The memberId that uniquely identifies the AccountHolder.",
-                    example = "50002",
+                    example = "5061",
                     name = "memberId",
                     required = true)
             @PathVariable("memberId") final int memberId) {
@@ -77,36 +77,37 @@ public class AccountHolderController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("{memberId}")
+    @PutMapping("{memberName}")
     @ApiOperation(value = "Updates the specified AccountHolder.", notes = "Updates the AccountHolder corresponding to the given memberId")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountHolder Updated", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
-            @ApiResponse(code = 404, message = "Recourse not found", response = GeneralResponse.class),
+            @ApiResponse(code = 404, message = "Request not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
     })
     public ResponseEntity<GeneralResponse<AccountHolderDto>> updateAccountHolder(
-            @ApiParam(value = "The memberName that uniquely identifies the AccountHolder.",
-                    example = "memberName",
-                    name = "memberId",
+            @ApiParam(value = "The memberName that the specified AccountHolder should be updated with.",
+                    example = "TestAccount",
+                    name = "memberName",
                     required = true)
-            @PathVariable("memberId") final String newMemberName,
+            @PathVariable("memberName") final String newMemberName,
             @ApiParam(value = "The AccountHolder balance that the specified AccountHolder should be updated with.",
                     name = "newAccountHolderBalance",
                     required = true)
-            @RequestParam("newAccountHolderBalance") final int newBalance,
+            @RequestParam("newAccountHolderBalance") final int newAccountHolderBalance,
             @ApiParam(value = "The AccountHolder currency that the specified AccountHolder should be updated with.",
                     name = "newAccountHolderCurrency",
-                    required = true)
-            @RequestParam("newAccountHolderCurrency") final String newCurrency,
+                    required = false,
+                    defaultValue = "MILES")
+            @RequestParam("newAccountHolderCurrency") final String newAccountHolderCurrency,
             @ApiParam(value = "The new starting date on the service that adds Miles for a member in ISO date format (yyyy-MM-dd)\r\n\f",
-                    required = true)
+                    required = false)
             @RequestParam(value = "newCreationDate", required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                    LocalDate newStartDate
+                    LocalDate newCreationDate
 
     ) {
-        AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.updateAccountHolder(newMemberName, newBalance, newCurrency, newStartDate);
+        AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.updateAccountHolder(newMemberName, newAccountHolderBalance, newAccountHolderCurrency, newCreationDate);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -121,15 +122,15 @@ public class AccountHolderController {
     })
     public ResponseEntity<GeneralResponse<AccountHolderDto>> subtractMiles(
             @ApiParam(value = "The memberId that uniquely identifies the AccountType.",
-                    example = "50002",
+                    example = "5061",
                     name = "memberId",
                     required = true)
-            @PathVariable("memberId") final int memberId,
+            @RequestParam("memberId") final int memberId,
             @ApiParam(value = "The AccountHolder balance that the specified AccountHolder should be updated (subtracted) with.",
                     example = "50",
                     name = "balance",
                     required = true)
-            @PathVariable("balance") final int newBalance
+            @RequestParam("balance") final int newBalance
     ){
         AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.subtractMiles(memberId,newBalance);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
@@ -137,27 +138,27 @@ public class AccountHolderController {
     }
 
 
-    @PutMapping("/{memberId}/addMiles")
+    @PutMapping("/addMiles")
     @ApiOperation(value = "Adds the specified AccountHolder (member) MILES.", notes = "Adds the AccountHolder corresponding to the given memberId")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "AccountHolder MILES subtracted", response = GeneralResponse.class),
+            @ApiResponse(code = 200, message = "AccountHolder MILES added", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
             @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
     })
     public ResponseEntity<GeneralResponse<AccountHolderDto>> addMiles(
             @ApiParam(value = "The memberId that uniquely identifies the AccountType.",
-                    example = "50002",
+                    example = "5061",
                     name = "memberId",
                     required = true)
-            @PathVariable("memberId") final int memberId,
+            @RequestParam("memberId") final int memberId,
             @ApiParam(value = "The AccountHolder balance that the specified AccountHolder should be updated (add) with.",
                     example = "100",
                     name = "balance",
                     required = true)
-            @PathVariable("balance") final int newBalance)
+            @RequestParam("balance") final int balance)
     {
-        AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.addMiles(memberId,newBalance);
+        AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.addMiles(memberId, balance);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
