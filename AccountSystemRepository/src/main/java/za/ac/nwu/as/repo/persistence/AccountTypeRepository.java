@@ -6,7 +6,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import za.ac.nwu.as.domain.dto.AccountTypeDto;
 import za.ac.nwu.as.domain.persistence.AccountType;
-
 import java.time.LocalDate;
 
 @Repository
@@ -18,7 +17,7 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
             "       CREATION_DATE, " +
             "       MNEMONIC" +
             "       FROM " +
-            "           C##HEINKE.ACCOUNT_TYPE "+
+            "       C##HEINKE.ACCOUNT_TYPE "+
             "       WHERE MNEMONIC = :mnemonic ", nativeQuery = true)
     AccountType getAccountTypeByMnemonicNativeQuery(String mnemonic);
 
@@ -50,5 +49,4 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
             "       at.creationDate = :newCreationDate "  +
             "       WHERE at.mnemonic = :mnemonic")
     AccountType updateAccountTypeByMnemonicNativeQuery(@Param("mnemonic") String mnemonic, @Param("newAccountTypeName") String newAccountTypeName, @Param("newCreationDate")  LocalDate newCreationDate);
-
 }

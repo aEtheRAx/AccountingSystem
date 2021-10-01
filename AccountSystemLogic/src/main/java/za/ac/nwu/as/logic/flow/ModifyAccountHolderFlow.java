@@ -1,7 +1,6 @@
 package za.ac.nwu.as.logic.flow;
 
 import za.ac.nwu.as.domain.dto.AccountHolderDto;
-
 import java.time.LocalDate;
 
 public interface ModifyAccountHolderFlow  {

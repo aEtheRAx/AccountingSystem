@@ -1,15 +1,10 @@
 package za.ac.nwu.as.translator.impl;
 
 import org.springframework.stereotype.Component;
-import za.ac.nwu.as.domain.dto.AccountHolderDto;
 import za.ac.nwu.as.domain.dto.AccountTransactionDto;
-import za.ac.nwu.as.domain.dto.AccountTypeDto;
-import za.ac.nwu.as.domain.persistence.AccountHolder;
 import za.ac.nwu.as.domain.persistence.AccountTransaction;
-import za.ac.nwu.as.domain.persistence.AccountType;
 import za.ac.nwu.as.repo.persistence.AccountTransactionRepository;
 import za.ac.nwu.as.translator.AccountTransactionTranslator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,28 +37,7 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
             throw new RuntimeException("Unable to read from the DB", e);
         }
         return accountTransactionDtos;
-
-                /*List<AccountTransaction> accountTransactions;
-        try {
-            accountTransactions = new ArrayList<>(repo.findAll());
-        } catch (Exception e) {
-            throw new RuntimeException("Unable to read to the DB", e);
-        }
-        return accountTransactions;
-         */
     }
-
-    /*
-    @Override
-    public AccountTransaction getAccountTransactionByPk(int transactionId) {
-        try {
-            Long value = Long.valueOf(transactionId);
-            return repo.findById(value).orElse(null);
-        } catch (Exception e) {
-            throw new RuntimeException("Unable to read to the DB", e);
-        }
-    }
-*/
 
     @Override
     public AccountTransactionDto getAccountTransByIDNativeQuery(int transactionId) {

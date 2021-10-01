@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.AccountHolderDto;
 import za.ac.nwu.as.logic.flow.ModifyAccountHolderFlow;
-import za.ac.nwu.as.repo.persistence.AccountHolderRepository;
 import za.ac.nwu.as.translator.AccountHolderTranslator;
-
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 
@@ -34,7 +32,5 @@ public class ModifyAccountHolderFlowImpl implements ModifyAccountHolderFlow {
     @Override
     public AccountHolderDto updateAccountHolder(String memberName, int balance, String currency, LocalDate startDate) {
         return translator.updateAccountHolder(memberName,balance,currency,startDate);
-        /*AccountHolderDto accountHolderDto = new AccountHolderDto(memberName,balance,currency,startDate);
-        return accountHolderDto;*/
     }
 }

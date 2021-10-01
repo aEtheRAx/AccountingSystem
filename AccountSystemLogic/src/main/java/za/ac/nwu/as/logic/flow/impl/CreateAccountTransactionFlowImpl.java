@@ -11,7 +11,6 @@ import za.ac.nwu.as.logic.flow.CreateAccountTransactionFlow;
 import za.ac.nwu.as.logic.flow.FetchAccountTypeFlow;
 import za.ac.nwu.as.translator.AccountTransactionDetailsTranslator;
 import za.ac.nwu.as.translator.AccountTransactionTranslator;
-
 import javax.transaction.Transactional;
 
 @Transactional

@@ -1,11 +1,9 @@
 package za.ac.nwu.as.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import za.ac.nwu.as.domain.persistence.AccountHolder;
 import za.ac.nwu.as.domain.persistence.AccountTransaction;
 import za.ac.nwu.as.domain.persistence.AccountTransactionDetails;
 import za.ac.nwu.as.domain.persistence.AccountType;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;

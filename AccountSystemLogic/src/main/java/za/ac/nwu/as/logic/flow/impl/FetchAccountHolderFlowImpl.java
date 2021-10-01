@@ -1,14 +1,11 @@
 package za.ac.nwu.as.logic.flow.impl;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.AccountHolderDto;
 import za.ac.nwu.as.domain.persistence.AccountHolder;
 import za.ac.nwu.as.logic.flow.FetchAccountHolderFlow;
 import za.ac.nwu.as.translator.AccountHolderTranslator;
-import za.ac.nwu.as.translator.AccountTypeTranslator;
-
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;

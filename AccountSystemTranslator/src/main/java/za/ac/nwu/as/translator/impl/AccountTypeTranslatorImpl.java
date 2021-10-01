@@ -3,11 +3,9 @@ package za.ac.nwu.as.translator.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.AccountTypeDto;
-import za.ac.nwu.as.domain.persistence.AccountTransaction;
 import za.ac.nwu.as.domain.persistence.AccountType;
 import za.ac.nwu.as.repo.persistence.AccountTypeRepository;
 import za.ac.nwu.as.translator.AccountTypeTranslator;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +58,6 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     public void deleteAccountTypeByMnemonic(String mnemonic) {
         try {
             accountTypeRepository.delete(accountTypeRepository.getAccountTypeByMnemonicNativeQuery(mnemonic));
-            //AccountType accountType = accountTypeRepository.deleteAccountTypeByMnemonicNativeQuery(mnemonic);
-            //return new AccountTypeDto(accountType);
         } catch (Exception e) {
             throw new RuntimeException("Unable to delete from the DB", e);
         }

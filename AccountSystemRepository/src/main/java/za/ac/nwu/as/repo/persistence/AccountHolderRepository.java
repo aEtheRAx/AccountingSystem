@@ -3,11 +3,7 @@ package za.ac.nwu.as.repo.persistence;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import za.ac.nwu.as.domain.dto.AccountHolderDto;
-import za.ac.nwu.as.domain.dto.AccountTypeDto;
 import za.ac.nwu.as.domain.persistence.AccountHolder;
-import za.ac.nwu.as.domain.persistence.AccountType;
-
 import java.time.LocalDate;
 
 @Repository
@@ -20,10 +16,9 @@ public interface AccountHolderRepository extends JpaRepository<AccountHolder, Lo
             "       CURRENCY, " +
             "       START_DATE" +
             "       FROM " +
-            "           C##HEINKE.ACCOUNT_HOLDER "+
+            "       C##HEINKE.ACCOUNT_HOLDER "+
             "       WHERE MEMBER_ID = :memberId ", nativeQuery = true)
     AccountHolder getAccountHolderByIDNativeQuery(int memberId);
-
 
     @Query(value = "SELECT " +
             "       at" +
@@ -31,17 +26,6 @@ public interface AccountHolderRepository extends JpaRepository<AccountHolder, Lo
             "       AccountHolder at" +
             "       WHERE   at.memberId = :memberId ")
     AccountHolder getAccountHolderByID(int memberId);
-/*
-    @Query(value = "SELECT new za.ac.nwu.as.domain.dto.AccountHolderDto( " +
-            "       at.memberName, "  +
-            "       at.balance, "   +
-            "       at.currency, "  +
-            "       at.startDate )"  +
-            "       FROM "  +
-            "       AccountHolder at" +
-            "       WHERE at.memberId = :memberId ")
-    AccountHolderDto getAccountHolderDtoByID(int memberId);
-    */
 
     //Update statement
     @Query(value = "UPDATE " +
@@ -66,5 +50,4 @@ public interface AccountHolderRepository extends JpaRepository<AccountHolder, Lo
             "       SET BALANCE = :newAccountBalance" +
             "       WHERE MEMBER_ID = :memberId", nativeQuery = true)
     AccountHolder subtractMilesByIDNativeQuery(int memberId, int newAccountBalance);
-
 }

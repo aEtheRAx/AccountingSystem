@@ -16,8 +16,6 @@ public class AccountHolder implements Serializable {
     private String currency;
     private LocalDate startDate;
 
-    //private Set<AccountTransaction> accountTransactions;
-
     public AccountHolder() {
     }
 
@@ -65,11 +63,6 @@ public class AccountHolder implements Serializable {
         return startDate;
     }
 
-    //@OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "memberId", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    /*public Set<AccountTransaction> getAccountTransactions() {
-        return accountTransactions;
-    }*/
-
     public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
@@ -90,10 +83,6 @@ public class AccountHolder implements Serializable {
         this.startDate = startDate;
     }
 
-    /*public void setAccountTransactions(Set<AccountTransaction> accountTransactions) {
-        this.accountTransactions = accountTransactions;
-    }*/
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,7 +93,7 @@ public class AccountHolder implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(memberId, memberName, balance, currency, startDate/*, accountTransactions*/);
+        return Objects.hash(memberId, memberName, balance, currency, startDate);
     }
 
     @Override
@@ -115,7 +104,7 @@ public class AccountHolder implements Serializable {
                 ", balance=" + balance +
                 ", currency='" + currency + '\'' +
                 ", startDate=" + startDate +
-                ", accountTransactions=" + /*accountTransactions +*/
+                ", accountTransactions=" +
                 '}';
     }
 }

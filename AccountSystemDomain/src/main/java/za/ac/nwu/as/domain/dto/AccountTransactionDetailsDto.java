@@ -3,7 +3,6 @@ package za.ac.nwu.as.domain.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import za.ac.nwu.as.domain.persistence.AccountTransaction;
 import za.ac.nwu.as.domain.persistence.AccountTransactionDetails;
-
 import java.util.Objects;
 
 public class AccountTransactionDetailsDto {
