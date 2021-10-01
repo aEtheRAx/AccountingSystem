@@ -105,7 +105,7 @@ public class AccountTypeControllerTest {
         verify(createAccountTypeFlow, times(1)).create(eq(accountType));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-
+/*
     @Test
     public void deleteAccountType() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":" +
@@ -124,7 +124,7 @@ public class AccountTypeControllerTest {
         verify(modifyAccountTypeFlow, times(1)).deleteAccountType(eq("PLAY"));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-
+*/
     @Test
     public void updateAccountType() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":" +

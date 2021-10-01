@@ -24,14 +24,14 @@ public interface AccountHolderRepository extends JpaRepository<AccountHolder, Lo
             "       WHERE MEMBER_ID = :memberId ", nativeQuery = true)
     AccountHolder getAccountHolderByIDNativeQuery(int memberId);
 
-    /*
+
     @Query(value = "SELECT " +
             "       at" +
             "       FROM " +
             "       AccountHolder at" +
             "       WHERE   at.memberId = :memberId ")
     AccountHolder getAccountHolderByID(int memberId);
-
+/*
     @Query(value = "SELECT new za.ac.nwu.as.domain.dto.AccountHolderDto( " +
             "       at.memberName, "  +
             "       at.balance, "   +

@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 public class AccountTypeTest {
 
+
     @Test
     public void getAccountTypeId() {
         AccountType accountType = new AccountType(12,"mnemonic","ccountTypeName",LocalDate.now());
@@ -110,6 +111,7 @@ public class AccountTypeTest {
             public void clear() {
 
             }
+
         };
         AccountType accountType = new AccountType();
         AccountType accountType1 = new AccountType(123,"accountMnemonic","AccountTypeName",LocalDate.now());
@@ -118,6 +120,7 @@ public class AccountTypeTest {
         accountType1.hashCode();
         accountType.setAccountTransactions(accountTransactions);
     }
+
 
     @Test
     public void setAccountTypeId() {

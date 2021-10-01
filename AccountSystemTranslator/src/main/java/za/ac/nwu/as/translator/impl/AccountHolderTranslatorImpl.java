@@ -66,7 +66,10 @@ public class AccountHolderTranslatorImpl implements AccountHolderTranslator {
     @Override
     public AccountHolderDto addMiles(int memberId, int newAccountBalance){
         try {
-            AccountHolder accountHolder = repo.addMilesByIDNativeQuery(memberId, newAccountBalance);
+            AccountHolder accountHolder = repo.getAccountHolderByIDNativeQuery(memberId);
+            accountHolder.setBalance(accountHolder.getBalance() + newAccountBalance);
+            repo.save(accountHolder);
+            //AccountHolder accountHolder = repo.addMilesByIDNativeQuery(memberId, newAccountBalance);
             return new AccountHolderDto(accountHolder);
         } catch (Exception e) {
             throw new RuntimeException("Unable to add currency the DB", e);
@@ -76,7 +79,10 @@ public class AccountHolderTranslatorImpl implements AccountHolderTranslator {
     @Override
     public AccountHolderDto subtractMiles(int memberId, int newAccountBalance) {
         try {
-            AccountHolder accountHolder = repo.subtractMilesByIDNativeQuery(memberId, newAccountBalance);
+            AccountHolder accountHolder = repo.getAccountHolderByIDNativeQuery(memberId);
+            accountHolder.setBalance(accountHolder.getBalance() - newAccountBalance);
+            repo.save(accountHolder);
+            //AccountHolder accountHolder = repo.subtractMilesByIDNativeQuery(memberId, newAccountBalance);
             return new AccountHolderDto(accountHolder);
         } catch (Exception e) {
             throw new RuntimeException("Unable to subtract currency the DB", e);

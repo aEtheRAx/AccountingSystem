@@ -51,6 +51,7 @@ public class AccountTypeDtoTest {
         assertNotNull(accountTypeDto.getAccountType());
     }
 
+
     @Test
     public void AccountTypeDto() {
         AccountType accountType = new AccountType(123,"accountMnemonic","AccountTypeName",LocalDate.now());

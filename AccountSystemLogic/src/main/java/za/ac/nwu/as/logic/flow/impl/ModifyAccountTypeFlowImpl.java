@@ -24,17 +24,13 @@ public class ModifyAccountTypeFlowImpl implements ModifyAccountTypeFlow {
     }
 
     @Override
-    public AccountTypeDto deleteAccountType(String mnemonic) {
-        return accountTranslator.deleteAccountTypeByMnemonicNativeQuery(mnemonic);
-    }
-
-    @Override
-    public AccountTypeDto deleteAccountTypeByMnemonicNativeQuery(String mnemonic) {
-        return accountTranslator.deleteAccountTypeByMnemonicNativeQuery(mnemonic);
+    public void deleteAccountType(String mnemonic) {
+        accountTranslator.deleteAccountTypeByMnemonic(mnemonic);
     }
 
     @Override
     public AccountTypeDto updateAccountType(String mnemonic, String newAccountTypeName, LocalDate newCreationDate) {
         return accountTranslator.updateAccountType(mnemonic, newAccountTypeName, newCreationDate);
     }
+
 }

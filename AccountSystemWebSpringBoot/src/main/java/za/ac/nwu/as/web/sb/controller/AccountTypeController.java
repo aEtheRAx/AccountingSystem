@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.nwu.as.domain.dto.AccountTypeDto;
+import za.ac.nwu.as.domain.persistence.AccountType;
 import za.ac.nwu.as.domain.service.GeneralResponse;
 import za.ac.nwu.as.logic.flow.CreateAccountTypeFlow;
 import za.ac.nwu.as.logic.flow.FetchAccountTypeFlow;
@@ -98,8 +99,8 @@ public class AccountTypeController {
                     name = "mnemonic",
                     required = true)
             @PathVariable("mnemonic") final String mnemonic) {
-        AccountTypeDto accountType = modifyAccountTypeFlow.deleteAccountType(mnemonic);
-        GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
+        modifyAccountTypeFlow.deleteAccountType(mnemonic);
+        GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -117,7 +118,6 @@ public class AccountTypeController {
                     name = "mnemonic",
                     required = true)
             @PathVariable("mnemonic") final String mnemonic,
-
             @ApiParam(value = "The new AccountTypeName that the specified AccountType should be updated with.",
                     name = "newAccountTypeName",
                     required = true)
@@ -127,9 +127,7 @@ public class AccountTypeController {
                     required = true)
             @RequestParam(value = "newCreationDate", required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                    LocalDate newCreationDate
-
-    ) {
+                    LocalDate newCreationDate) {
         AccountTypeDto accountType = modifyAccountTypeFlow.updateAccountType(mnemonic, newAccountTypeName, newCreationDate);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
         return new ResponseEntity<>(response, HttpStatus.OK);
