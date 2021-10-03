@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import za.ac.nwu.as.domain.persistence.AccountHolder;
+import za.ac.nwu.as.domain.persistence.AccountType;
+
 import java.time.LocalDate;
 
 @Repository
@@ -26,6 +28,13 @@ public interface AccountHolderRepository extends JpaRepository<AccountHolder, Lo
             "       AccountHolder at" +
             "       WHERE   at.memberId = :memberId ")
     AccountHolder getAccountHolderByID(int memberId);
+
+    @Query(value = "SELECT " +
+            "       at" +
+            "       FROM " +
+            "       AccountHolder at" +
+            "       WHERE   at.memberName = :memberName ")
+    AccountHolder getAccountHolderByName(String memberName);
 
     //Update statement
     @Query(value = "UPDATE " +

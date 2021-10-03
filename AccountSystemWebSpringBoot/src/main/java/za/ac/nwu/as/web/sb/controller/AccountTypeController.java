@@ -40,7 +40,7 @@ public class AccountTypeController {
     }
 
     @GetMapping("/all")
-    @ApiOperation(value = "Gets all the configured Account types", notes = "Returns a list of account types")
+    @ApiOperation(value = "Gets all the configured AccountTypes", notes = "Returns a list of account types")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The AccountType was found successfully", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
@@ -66,7 +66,7 @@ public class AccountTypeController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("{mnemonic}")
+    @GetMapping("/getAccountType")
     @ApiOperation(value = "Fetch the specified AccountType.", notes = "Fetch the AccountType corresponding to the given mnemonic")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The AccountType was found successfully", response = GeneralResponse.class),
@@ -79,13 +79,13 @@ public class AccountTypeController {
                     example = "MILES",
                     name = "mnemonic",
                     required = true)
-            @PathVariable("mnemonic") final String mnemonic) {
+            @RequestParam("mnemonic") final String mnemonic) {
         AccountTypeDto accountType = fetchAccountTypeFlow.getAccountTypeByMnemonic(mnemonic);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping("{mnemonic}")
+    @DeleteMapping("/deleteAccountType")
     @ApiOperation(value = "Delete the specified AccountType.", notes = "Delete the AccountType corresponding to the given mnemonic")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountType deleted", response = GeneralResponse.class),
@@ -98,7 +98,7 @@ public class AccountTypeController {
                     example = "MILES",
                     name = "mnemonic",
                     required = true)
-            @PathVariable("mnemonic") final String mnemonic) {
+            @RequestParam("mnemonic") final String mnemonic) {
         modifyAccountTypeFlow.deleteAccountType(mnemonic);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true);
         return new ResponseEntity<>(response, HttpStatus.OK);

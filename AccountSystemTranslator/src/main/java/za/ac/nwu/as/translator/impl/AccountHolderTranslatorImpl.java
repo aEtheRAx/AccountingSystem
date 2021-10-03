@@ -51,7 +51,13 @@ public class AccountHolderTranslatorImpl implements AccountHolderTranslator {
     @Override
     public AccountHolderDto updateAccountHolder(String memberName, int newAccountBalance, String newAccountCurrency, LocalDate newAccountStartDate) {
         try {
-            AccountHolder accountHolder = repo.updateAccountHolderByIDNativeQuery(memberName, newAccountCurrency,newAccountBalance,  newAccountStartDate);
+            AccountHolder accountHolder = repo.getAccountHolderByName(memberName);
+            //AccountHolder accountHolder = repo.updateAccountHolderByIDNativeQuery(memberName, newAccountCurrency,newAccountBalance,  newAccountStartDate);
+            accountHolder.setMemberName(memberName);
+            accountHolder.setBalance(newAccountBalance);
+            accountHolder.setCurrency(newAccountCurrency);
+            accountHolder.setStartDate(newAccountStartDate);
+            repo.save(accountHolder);
             return new AccountHolderDto(accountHolder);
         } catch (Exception e) {
             throw new RuntimeException("Unable to update the DB", e);

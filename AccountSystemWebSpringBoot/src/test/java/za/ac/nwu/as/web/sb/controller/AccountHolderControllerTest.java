@@ -83,7 +83,6 @@ public class AccountHolderControllerTest {
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
 
-
     @Test
     public void updateAccountHolder() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":" +
@@ -97,7 +96,7 @@ public class AccountHolderControllerTest {
         MvcResult mvcResult = mockMvc.perform(put((String.format("%s/%s", ACCOUNT_HOLDER_CONTROLLER_URL, "TestAccount")))
                         .param("newAccountHolderBalance", String.valueOf(200))
                         .param("newAccountHolderCurrency", "MILES")
-                        .param("newCreationDate", "2021-04-01")
+                        .param("newStartDate", "2021-04-01")
                         .servletPath(APP_URL)
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -108,7 +107,6 @@ public class AccountHolderControllerTest {
                 eq("MILES"), eq(LocalDate.parse("2021-04-01")));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-
 
     @Test
     public void getAll() throws Exception {
@@ -130,25 +128,72 @@ public class AccountHolderControllerTest {
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
 
-
-/*
     @Test
-    public void deleteAccountType() throws Exception {
+    public void addMiles() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":" +
-                "{\"mnemonic\":\"PLAY\",\"accountTypeName\":\"Play account type\",\"creationDate\":[2021,4,1]}}";
-        AccountTypeDto accountType = new AccountTypeDto("PLAY", "Play account type", LocalDate.parse("2021-04-01"));
+                "{\"memberName\":\"TestAccount\",\"balance\":200,\"currency\":\"MILES\",\"startDate\":[2021,4,1]}}";
 
-        when(modifyAccountHolderFlow.deleteAccountType(anyString())).thenReturn(accountType);
+        AccountHolderDto accountHolder = new AccountHolderDto("TestAccount", 200, "MILES",
+                LocalDate.parse("2021-04-01"));
+        when(modifyAccountHolderFlow.addMiles(anyInt(),anyInt())).thenReturn(accountHolder);
 
-        MvcResult mvcResult = mockMvc.perform(delete((String.format("%s/%s", ACCOUNT_TYPE_CONTROLLER_URL, "PLAY")))
+        MvcResult mvcResult = mockMvc.perform(put((String.format("%s/%s", ACCOUNT_HOLDER_CONTROLLER_URL, "addMiles")))
+                        .param("memberId", String.valueOf(5061))
+                        .param("balance", String.valueOf(200))
                         .servletPath(APP_URL)
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        verify(modifyAccountHolderFlow, times(1)).deleteAccountType(eq("PLAY"));
+        verify(modifyAccountHolderFlow, times(1)).addMiles(eq(5061),eq(200));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-*/
+
+    @Test
+    public void subtractMiles() throws Exception {
+        String expectedResponse = "{\"successful\":true,\"payload\":" +
+                "{\"memberName\":\"TestAccount\",\"balance\":200,\"currency\":\"MILES\",\"startDate\":[2021,4,1]}}";
+
+        AccountHolderDto accountHolder = new AccountHolderDto("TestAccount", 200, "MILES",
+                LocalDate.parse("2021-04-01"));
+        when(modifyAccountHolderFlow.subtractMiles(anyInt(),anyInt())).thenReturn(accountHolder);
+
+        MvcResult mvcResult = mockMvc.perform(put((String.format("%s/%s", ACCOUNT_HOLDER_CONTROLLER_URL, "subtractMiles")))
+                        .param("memberId", String.valueOf(5061))
+                        .param("balance", String.valueOf(200))
+                        .servletPath(APP_URL)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        verify(modifyAccountHolderFlow, times(1)).subtractMiles(eq(5061),eq(200));
+        assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
+    }
+
+    @Test
+    public void getAccountHolder() throws Exception {
+        String expectedResponse = "{\"successful\":true,\"payload\":" +
+                "{\"memberName\":\"TestAccount\",\"balance\":200,\"currency\":\"MILES\",\"startDate\":[2021,4,1]}}";
+
+        AccountHolderDto accountHolder = new AccountHolderDto("TestAccount", 200, "MILES",
+                LocalDate.parse("2021-04-01"));
+
+        when(fetchAccountHolderFlow.getAccountHolderById(anyInt())).thenReturn(accountHolder);
+
+        MvcResult mvcResult = mockMvc.perform(get((String.format("%s/%s", ACCOUNT_HOLDER_CONTROLLER_URL, "getMemberByID")))
+                        .param("memberId", String.valueOf(5061))
+                        .servletPath(APP_URL)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        verify(fetchAccountHolderFlow, times(1)).getAccountHolderById(eq(5061));
+        assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
+    }
+
+
+
 }

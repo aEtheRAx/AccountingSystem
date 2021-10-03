@@ -46,7 +46,7 @@ public class AccountHolderController {
     }
 
     @GetMapping("/all")
-    @ApiOperation(value = "Gets all the configured Account holders", notes = "Returns a list of account holders")
+    @ApiOperation(value = "Gets all the configured AccountHolders.", notes = "Returns a list of account holders")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Account holders returned", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
@@ -58,8 +58,8 @@ public class AccountHolderController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/{memberId}")
-    @ApiOperation(value = "Fetch the specified AccountHolder.", notes = "Fetch the AccountHolder corresponding to the given memberId")
+    @GetMapping("/getMemberByID")
+    @ApiOperation(value = "Fetch the specified AccountHolder and view miles.", notes = "Fetch the AccountHolder corresponding to the given memberId")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The AccountHolder was found successfully", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
@@ -71,7 +71,7 @@ public class AccountHolderController {
                     example = "5061",
                     name = "memberId",
                     required = true)
-            @PathVariable("memberId") final int memberId) {
+            @RequestParam("memberId") final int memberId) {
         AccountHolderDto AccountHolderResponse = fetchAccountHolderFlow.getAccountHolderById(memberId);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -97,23 +97,22 @@ public class AccountHolderController {
             @RequestParam("newAccountHolderBalance") final int newAccountHolderBalance,
             @ApiParam(value = "The AccountHolder currency that the specified AccountHolder should be updated with.",
                     name = "newAccountHolderCurrency",
-                    required = false,
+                    required = true,
                     defaultValue = "MILES")
             @RequestParam("newAccountHolderCurrency") final String newAccountHolderCurrency,
             @ApiParam(value = "The new starting date on the service that adds Miles for a member in ISO date format (yyyy-MM-dd)\r\n\f",
-                    required = false)
-            @RequestParam(value = "newCreationDate", required = false)
+                    required = true)
+            @RequestParam(value = "newStartDate", required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                    LocalDate newCreationDate
-
+                    LocalDate newStartDate
     ) {
-        AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.updateAccountHolder(newMemberName, newAccountHolderBalance, newAccountHolderCurrency, newCreationDate);
+        AccountHolderDto AccountHolderResponse = modifyAccountHolderFlow.updateAccountHolder(newMemberName, newAccountHolderBalance, newAccountHolderCurrency, newStartDate);
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/{memberId}/subtractMiles")
-    @ApiOperation(value = "Subtract the specified AccountHolder (member) MILES.", notes = "Subtract the AccountHolder corresponding to the given memberId")
+    @PutMapping("/subtractMiles")
+    @ApiOperation(value = "Subtract currency from specified AccountHolder (member).", notes = "Subtract the AccountHolder corresponding to the given memberId")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountHolder MILES subtracted", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
@@ -139,7 +138,7 @@ public class AccountHolderController {
 
 
     @PutMapping("/addMiles")
-    @ApiOperation(value = "Adds the specified AccountHolder (member) MILES.", notes = "Adds the AccountHolder corresponding to the given memberId")
+    @ApiOperation(value = "Adds currency to the specified AccountHolder (member).", notes = "Adds the AccountHolder corresponding to the given memberId")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountHolder MILES added", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
@@ -162,6 +161,4 @@ public class AccountHolderController {
         GeneralResponse<AccountHolderDto> response = new GeneralResponse<>(true, AccountHolderResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
-
 }

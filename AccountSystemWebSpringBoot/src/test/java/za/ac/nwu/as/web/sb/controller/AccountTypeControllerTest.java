@@ -105,26 +105,52 @@ public class AccountTypeControllerTest {
         verify(createAccountTypeFlow, times(1)).create(eq(accountType));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-/*
+
+
     @Test
-    public void deleteAccountType() throws Exception {
+    public void getAccountType() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":" +
-                "{\"mnemonic\":\"PLAY\",\"accountTypeName\":\"Play account type\",\"creationDate\":[2021,4,1]}}";
-        AccountTypeDto accountType = new AccountTypeDto("PLAY", "Play account type", LocalDate.parse("2021-04-01"));
+                "{\"mnemonic\":\"MILES\",\"accountTypeName\":\"Play account type\",\"creationDate\":[2021,4,1]}}";
+        AccountTypeDto accountType = new AccountTypeDto("MILES", "Play account type", LocalDate.parse("2021-04-01"));
 
-        when(modifyAccountTypeFlow.deleteAccountType(anyString())).thenReturn(accountType);
+        when(fetchAccountTypeFlow.getAccountTypeByMnemonic(anyString())).thenReturn(accountType);
 
-        MvcResult mvcResult = mockMvc.perform(delete((String.format("%s/%s", ACCOUNT_TYPE_CONTROLLER_URL, "PLAY")))
+        MvcResult mvcResult = mockMvc.perform(get((String.format("%s/%s", ACCOUNT_TYPE_CONTROLLER_URL, "getAccountType")))
+                        .param("mnemonic", "MILES")
                         .servletPath(APP_URL)
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        verify(modifyAccountTypeFlow, times(1)).deleteAccountType(eq("PLAY"));
+        verify(fetchAccountTypeFlow, times(1)).getAccountTypeByMnemonic(eq("MILES"));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-*/
+
+
+    @Test
+    public void deleteAccountType() throws Exception {
+        String expectedResponse = "{\"successful\":true,\"payload\":" +
+                "null}";
+        AccountTypeDto accountType = new AccountTypeDto("ABC", "Play account type", LocalDate.parse("2021-04-01"));
+
+        modifyAccountTypeFlow.deleteAccountType(anyString());
+
+        MvcResult mvcResult = mockMvc.perform(delete((String.format("%s/%s", ACCOUNT_TYPE_CONTROLLER_URL, "deleteAccountType")))
+                        .param("mnemonic", "ABC")
+                        .servletPath(APP_URL)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        verify(modifyAccountTypeFlow, times(1)).deleteAccountType(eq("ABC"));
+        assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
+    }
+
+
+
+
     @Test
     public void updateAccountType() throws Exception {
         String expectedResponse = "{\"successful\":true,\"payload\":" +

@@ -42,7 +42,7 @@ public class AccountTransactionController {
     }
 
     @GetMapping("/all")
-    @ApiOperation(value = "Gets all the configured Account Transactions", notes = "Returns a list of account transactions")
+    @ApiOperation(value = "Gets all the configured AccountTransactions", notes = "Returns a list of account transactions")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Account types returned", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
@@ -54,7 +54,7 @@ public class AccountTransactionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("transactionId")
+    @GetMapping("/getTransaction")
     @ApiOperation(value = "Fetch the specified AccountTransaction.", notes = "Fetch the AccountTransaction corresponding to the given transactionId")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The AccountTransaction was found successfully", response = GeneralResponse.class),
@@ -67,7 +67,7 @@ public class AccountTransactionController {
                     example = "50002",
                     name = "transactionId",
                     required = true)
-            @PathVariable("transactionId") final int transactionId) {
+            @RequestParam("transactionId") final int transactionId) {
         AccountTransactionDto AccountTransaction = fetchAccountTransactionFlow.getAccountTransactionById(transactionId);
         GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, AccountTransaction);
         return new ResponseEntity<>(response, HttpStatus.OK);
