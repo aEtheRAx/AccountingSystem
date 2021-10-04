@@ -12,6 +12,8 @@ import za.ac.nwu.as.domain.dto.AccountTypeDto;
 import za.ac.nwu.as.translator.AccountHolderTranslator;
 import za.ac.nwu.as.translator.AccountTypeTranslator;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -37,7 +39,7 @@ public class CreateAccountHolderFlowImplTest {
     public void create() {
         // Write a test here
         when(translator.create(any(AccountHolderDto.class))).thenReturn(null);
-        AccountHolderDto result = flow.create((new AccountHolderDto()));
+        AccountHolderDto result = flow.create((new AccountHolderDto("memberName",1500,"MILES,", LocalDate.now())));
         assertNull(result);
         verify(translator, atLeastOnce()).create(any(AccountHolderDto.class));
     }

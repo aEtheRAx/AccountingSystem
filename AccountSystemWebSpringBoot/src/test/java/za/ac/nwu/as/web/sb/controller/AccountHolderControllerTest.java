@@ -193,7 +193,4 @@ public class AccountHolderControllerTest {
         verify(fetchAccountHolderFlow, times(1)).getAccountHolderById(eq(5061));
         assertEquals(expectedResponse, mvcResult.getResponse().getContentAsString());
     }
-
-
-
 }
