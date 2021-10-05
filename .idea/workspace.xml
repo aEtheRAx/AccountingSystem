@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64df6a55-f727-4d7d-81b4-96ba0e95ef67" name="Changes" comment="Unit tests added">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="64df6a55-f727-4d7d-81b4-96ba0e95ef67" name="Changes" comment="Logging added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountSystemDomain/src/main/java/za/ac/nwu/as/domain/dto/AccountTransactionDetailsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemDomain/src/main/java/za/ac/nwu/as/domain/dto/AccountTransactionDetailsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountSystemDomain/src/main/java/za/ac/nwu/as/domain/dto/AccountTransactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemDomain/src/main/java/za/ac/nwu/as/domain/dto/AccountTransactionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountSystemDomain/src/main/java/za/ac/nwu/as/domain/persistence/AccountTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemDomain/src/main/java/za/ac/nwu/as/domain/persistence/AccountTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountSystemDomain/src/test/java/za/ac/nwu/as/domain/dto/AccountTransactionDtoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemDomain/src/test/java/za/ac/nwu/as/domain/dto/AccountTransactionDtoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AccountSystemLogic/src/main/java/za/ac/nwu/as/logic/flow/impl/CreateAccountHolderFlowImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemLogic/src/main/java/za/ac/nwu/as/logic/flow/impl/CreateAccountHolderFlowImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AccountSystemLogic/src/main/java/za/ac/nwu/as/logic/flow/impl/CreateAccountTransactionFlowImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemLogic/src/main/java/za/ac/nwu/as/logic/flow/impl/CreateAccountTransactionFlowImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccountSystemLogic/src/main/java/za/ac/nwu/as/logic/flow/impl/CreateAccountTypeFlowImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemLogic/src/main/java/za/ac/nwu/as/logic/flow/impl/CreateAccountTypeFlowImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccountSystemLogic/src/test/java/za/ac/nwu/as/logic/flow/impl/CreateAccountHolderFlowImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemLogic/src/test/java/za/ac/nwu/as/logic/flow/impl/CreateAccountHolderFlowImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccountSystemWebSpringBoot/src/test/java/za/ac/nwu/as/web/sb/controller/AccountHolderControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemWebSpringBoot/src/test/java/za/ac/nwu/as/web/sb/controller/AccountHolderControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccountSystemWebSpringBoot/src/test/java/za/ac/nwu/as/web/sb/controller/AccountTypeControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemWebSpringBoot/src/test/java/za/ac/nwu/as/web/sb/controller/AccountTypeControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountSystemTranslator/src/main/java/za/ac/nwu/as/translator/impl/AccountTransactionTranslatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountSystemTranslator/src/main/java/za/ac/nwu/as/translator/impl/AccountTransactionTranslatorImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +118,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AccountTransactionDtoTest.setDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AccountSystemDomain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.nwu.as.domain.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.nwu.as.domain.dto" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.nwu.as.domain.dto.AccountTransactionDtoTest" />
+      <option name="METHOD_NAME" value="setDetails" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CreateAccountHolderFlowImplTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AccountSystemLogic" />
       <extension name="coverage">
@@ -128,22 +144,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="za.ac.nwu.as.logic.flow.impl" />
       <option name="MAIN_CLASS_NAME" value="za.ac.nwu.as.logic.flow.impl.CreateAccountHolderFlowImplTest" />
-      <option name="METHOD_NAME" value="create" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CreateAccountTransactionFlowImplTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AccountSystemLogic" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="za.ac.nwu.as.logic.flow.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="za.ac.nwu.as.logic.flow.impl" />
-      <option name="MAIN_CLASS_NAME" value="za.ac.nwu.as.logic.flow.impl.CreateAccountTransactionFlowImplTest" />
       <option name="METHOD_NAME" value="create" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -169,10 +169,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.RestServiceApplication" />
+        <item itemvalue="JUnit.AccountTransactionDtoTest.setDetails" />
         <item itemvalue="JUnit.CreateAccountTypeFlowImplTest.create" />
         <item itemvalue="JUnit.CreateAccountHolderFlowImplTest.create" />
         <item itemvalue="JUnit.AccountHolderControllerTest.updateAccountHolder" />
-        <item itemvalue="JUnit.CreateAccountTransactionFlowImplTest.create" />
       </list>
     </recent_temporary>
   </component>
@@ -318,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633283463682</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Logging added">
+      <created>1633374256821</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1633374256821</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,6 +388,7 @@
     <MESSAGE value="Services updated &amp; fixed" />
     <MESSAGE value="Code Cleanup done" />
     <MESSAGE value="Unit tests added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unit tests added" />
+    <MESSAGE value="Logging added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logging added" />
   </component>
 </project>

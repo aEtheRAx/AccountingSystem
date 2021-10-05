@@ -63,11 +63,12 @@ public class AccountTransactionDtoTest {
         accountTransactionDto.setTransactionId(1242);
     }
 
+
     @Test
     public void AccountTransactionDto() {
         AccountType accountType = new AccountType();
         AccountTransaction accountTransaction = new AccountTransaction(123,accountType,456,100,LocalDate.now());
-        AccountTransactionDetails details = new AccountTransactionDetails();
+        AccountTransactionDetailsDto details = new AccountTransactionDetailsDto();
         AccountTransactionDto accountTransactionDto01 = new AccountTransactionDto(123,"accountTypeMnemonic",345,1500,LocalDate.now());
         AccountTransactionDto accountTransactionDto02 = new AccountTransactionDto(123,"accountTypeMnemonic",345,1500,LocalDate.now(), details);
         accountTransactionDto01.buildAccountTransaction(accountType);
@@ -77,16 +78,16 @@ public class AccountTransactionDtoTest {
         accountTransactionDto01.hashCode();
     }
 
-
     @Test
     public void getDetails() {
         AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
         assertNull(accountTransactionDto.getDetails());
     }
 
+
     @Test
     public void setDetails() {
-        AccountTransactionDetails details = new AccountTransactionDetails();
+        AccountTransactionDetailsDto details = new AccountTransactionDetailsDto();
         AccountTransactionDto accountTransactionDto = new AccountTransactionDto();
         accountTransactionDto.setDetails(details);
     }

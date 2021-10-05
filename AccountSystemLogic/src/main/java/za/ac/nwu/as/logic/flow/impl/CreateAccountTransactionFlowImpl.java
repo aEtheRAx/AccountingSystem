@@ -34,21 +34,6 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
     @Override
     public AccountTransactionDto create(AccountTransactionDto accountTransactionDto) {
 
-        /*
-        AccountType accountType = fetchAccountTypeFlow.getAccountTypeDbEntityByMnemonic(accountTransactionDto.getAccountTypeMnemonic());
-        AccountTransaction accountTransaction = accountTransactionDto.buildAccountTransaction(accountType);
-        AccountTransaction createdAccountTransaction = accountTransactionTranslator.save(accountTransaction);
-
-        if (null != accountTransactionDto.getDetails()) {
-            AccountTransactionDetails accountTransactionDetails = accountTransactionDto.getDetails().buildAccountTransactionDetails(createdAccountTransaction);
-            createdAccountTransaction.setDetails(accountTransactionDetails);
-            accountTransactionDetailsTranslator.save(createdAccountTransaction.getDetails());
-        }
-        return new AccountTransactionDto(createdAccountTransaction);
-
-         */
-
-
         if(LOGGER.isInfoEnabled()) {
             String outputForLogging = "null";
             if ((null != accountTransactionDto) && (null != accountTransactionDto.getDetails())) {

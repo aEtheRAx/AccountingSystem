@@ -32,7 +32,6 @@ public class CreateAccountHolderFlowImpl implements CreateAccountHolderFlow {
             LOGGER.info("The input is {} and the Details is {}", accountHolder, outputForLogging);
         }
 
-
         //Prev code
         if (null == accountHolder.getStartDate()){
             accountHolder.setStartDate(LocalDate.now());
