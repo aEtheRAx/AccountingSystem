@@ -93,7 +93,7 @@ public class AccountHolderController {
             @PathVariable("memberName") final String newMemberName,
             @ApiParam(value = "The AccountHolder balance that the specified AccountHolder should be updated with.",
                     name = "newAccountHolderBalance",
-                    required = true)
+                    required = false)
             @RequestParam("newAccountHolderBalance") final int newAccountHolderBalance,
             @ApiParam(value = "The AccountHolder currency that the specified AccountHolder should be updated with.",
                     name = "newAccountHolderCurrency",

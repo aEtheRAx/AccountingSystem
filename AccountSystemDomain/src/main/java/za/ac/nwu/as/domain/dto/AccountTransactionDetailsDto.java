@@ -37,7 +37,7 @@ public class AccountTransactionDetailsDto {
     @ApiModelProperty(position = 1,
             value = "AccountTransactionDetails PartnerName",
             name = "PartnerName",
-            notes = "Uniquely identifies the account type",
+            notes = "The name of the partner",
             dataType = "java.lang.String",
             example = "ABC_Company",
             required = true)
@@ -48,7 +48,7 @@ public class AccountTransactionDetailsDto {
     @ApiModelProperty(position = 2,
             value = "AccountTransactionDetails NumberOfItems",
             name = "MemberId",
-            notes = "Uniquely identifies the account type",
+            notes = "The number of items",
             dataType = "java.lang.Integer",
             example = "12",
             required = true)

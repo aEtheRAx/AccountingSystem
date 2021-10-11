@@ -52,9 +52,25 @@ public class AccountHolderTranslatorImpl implements AccountHolderTranslator {
     public AccountHolderDto updateAccountHolder(String memberName, int newAccountBalance, String newAccountCurrency, LocalDate newAccountStartDate) {
         try {
             AccountHolder accountHolder = repo.getAccountHolderByName(memberName);
-            //AccountHolder accountHolder = repo.updateAccountHolderByIDNativeQuery(memberName, newAccountCurrency,newAccountBalance,  newAccountStartDate);
             accountHolder.setMemberName(memberName);
-            accountHolder.setBalance(newAccountBalance);
+            try {
+                if ((accountHolder.getCurrency().equals("MILES")) && (newAccountCurrency.equals("ZOOM")))
+                    accountHolder.setBalance(newAccountBalance + newAccountBalance);
+                else if ((accountHolder.getCurrency().equals("MILES")) && (newAccountCurrency.equals("PLAYS")))
+                    accountHolder.setBalance(newAccountBalance + newAccountBalance + newAccountBalance);
+                else if ((accountHolder.getCurrency().equals("ZOOM")) && (newAccountCurrency.equals("MILES")))
+                    accountHolder.setBalance(newAccountBalance - newAccountBalance);
+                else if ((accountHolder.getCurrency().equals("ZOOM")) && (newAccountCurrency.equals("PLAYS")))
+                    accountHolder.setBalance(newAccountBalance + newAccountBalance);
+                else if ((accountHolder.getCurrency().equals("PLAYS")) && (newAccountCurrency.equals("ZOOM")))
+                    accountHolder.setBalance(newAccountBalance - newAccountBalance);
+                else if ((accountHolder.getCurrency().equals("PLAYS")) && (newAccountCurrency.equals("MILES")))
+                    accountHolder.setBalance(newAccountBalance - newAccountBalance - newAccountBalance);
+                else if (accountHolder.getCurrency().equals(newAccountCurrency))
+                    accountHolder.setBalance(newAccountBalance);
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to convert currency", e);
+            }
             accountHolder.setCurrency(newAccountCurrency);
             accountHolder.setStartDate(newAccountStartDate);
             repo.save(accountHolder);

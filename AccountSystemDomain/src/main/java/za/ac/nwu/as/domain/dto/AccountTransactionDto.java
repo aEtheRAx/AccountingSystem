@@ -61,7 +61,7 @@ public class AccountTransactionDto implements Serializable {
     @ApiModelProperty(position = 1,
             value = "AccountTransaction Id",
             name = "transactionId",
-            notes = "Uniquely identifies the account type",
+            notes = "Uniquely identifies the account transaction",
             dataType = "java.lang.Integer",
             example = "1",
             required = true)
@@ -72,7 +72,7 @@ public class AccountTransactionDto implements Serializable {
     @ApiModelProperty(position = 2,
             value = "AccountType Mnemonic",
             name = "Mnemonic",
-            notes = "Uniquely identifies the account type",
+            notes = "Mnemonic that identifies the account type",
             dataType = "java.lang.String",
             example = "MILES",
             required = true)
@@ -83,7 +83,7 @@ public class AccountTransactionDto implements Serializable {
     @ApiModelProperty(position = 3,
             value = "AccountTransaction MemberId",
             name = "MemberId",
-            notes = "Uniquely identifies the account type",
+            notes = "Uniquely identifies the account holder",
             dataType = "java.lang.Integer",
             example = "5061",
             required = true)
@@ -105,7 +105,7 @@ public class AccountTransactionDto implements Serializable {
     @ApiModelProperty(position = 5,
             value = "AccountTransaction Date",
             name = "transactionDate",
-            notes = "Uniquely identifies the account type",
+            notes = "Date on which the account transaction took place",
             dataType = "java.time.LocalDate",
             example = "2020-01-01",
             required = true)
